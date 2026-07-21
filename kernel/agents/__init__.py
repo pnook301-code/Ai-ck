@@ -4,6 +4,10 @@ from .base import BaseAgent
 from .registry import AgentRegistry
 from .orchestrator import OrchestratorAgent
 from .manager import AgentManager
+from .specialists import (
+    CoderAgent, TesterAgent, DevOpsAgent,
+    ResearcherAgent, SecurityAgent, ReviewerAgent,
+)
 
 __all__ = [
     "AgentMessage",
@@ -14,4 +18,10 @@ __all__ = [
     "AgentRegistry",
     "OrchestratorAgent",
     "AgentManager",
+    "CoderAgent",
+    "TesterAgent",
+    "DevOpsAgent",
+    "ResearcherAgent",
+    "SecurityAgent",
+    "ReviewerAgent",
 ]

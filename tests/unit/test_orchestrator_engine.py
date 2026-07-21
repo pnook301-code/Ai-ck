@@ -82,3 +82,20 @@ class TestOrchestratorEvents:
         engine.memory.remember("test data")
         results = engine.memory.recall("test")
         assert len(results) >= 1
+
+
+class TestOrchestratorVideoWatch:
+    @pytest.mark.asyncio
+    async def test_watch_not_detected(self, engine):
+        result = await engine.process("hello world")
+        assert "video" not in result
+
+    @pytest.mark.asyncio
+    async def test_watch_plugin_parse(self, engine):
+        params = engine.watch_plugin.parse("/watch https://example.com/v.mp4 What is this?")
+        assert params is not None
+        assert params["source"] == "https://example.com/v.mp4"
+
+    @pytest.mark.asyncio
+    async def test_watch_plugin_returns_none_for_normal(self, engine):
+        assert engine.watch_plugin.parse("just a normal message") is None
