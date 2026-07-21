@@ -1,7 +1,7 @@
 """State Management"""
 from typing import Any, Dict, Optional, TypeVar
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import json
 import asyncio
@@ -13,7 +13,7 @@ T = TypeVar('T')
 @dataclass
 class StateSnapshot:
     data: Dict[str, Any] = field(default_factory=dict)
-    timestamp: datetime = field(default_factory=datetime.utcnow)
+    timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     version: int = 1
 
 
@@ -67,7 +67,7 @@ class StateManager:
         with self._lock:
             return StateSnapshot(
                 data=dict(self._data),
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(timezone.utc),
                 version=self._data.get("_version", 1)
             )
 
@@ -81,7 +81,7 @@ class StateManager:
                 return
             try:
                 self._data["_version"] = self._data.get("_version", 0) + 1
-                self._data["_updated"] = datetime.utcnow().isoformat()
+                self._data["_updated"] = datetime.now(timezone.utc).isoformat()
                 with open(self._state_file, 'w') as f:
                     json.dump(self._data, f, indent=2, default=str)
                 self._dirty = False
