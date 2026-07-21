@@ -1,7 +1,7 @@
 """Event Bus - async event processing"""
 from typing import Any, Callable, Dict, List, Optional, Awaitable
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 import asyncio
 import uuid
 import logging
@@ -12,7 +12,7 @@ class Event:
     name: str
     data: Dict[str, Any] = field(default_factory=dict)
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    timestamp: float = field(default_factory=lambda: datetime.utcnow().timestamp())
+    timestamp: float = field(default_factory=lambda: datetime.now(timezone.utc).timestamp())
     source: str = "kernel"
 
 
@@ -28,6 +28,7 @@ class EventBus:
         self._logger = logger
         self._running = False
         self._queue: asyncio.Queue = asyncio.Queue()
+        self._tasks: List[asyncio.Task] = []
 
     async def start(self):
         self._running = True
@@ -90,8 +91,10 @@ class EventBus:
 
     async def emit_async(self, event_name: str, data: Dict[str, Any] = None):
         await self._queue.put((event_name, data or {}))
+        self._tasks[:] = [t for t in self._tasks if not t.done()]
         if self._running:
-            asyncio.create_task(self._process_queue())
+            task = asyncio.create_task(self._process_queue())
+            self._tasks.append(task)
 
     async def _process_queue(self):
         try:
@@ -107,10 +110,11 @@ class EventBus:
         except Exception as e:
             if self._logger:
                 self._logger.error(
-                    f"Handler error for {event.name}",
-                    error=str(e),
-                    handler=handler.__name__
+                    f"Handler error for {event.name} — handler={getattr(handler, '__name__', '?')}: {e}"
                 )
+            else:
+                import traceback
+                traceback.print_exc()
 
     def listeners(self, event_name: str = None) -> int:
         if event_name:

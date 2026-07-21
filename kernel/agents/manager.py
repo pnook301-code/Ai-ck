@@ -1,4 +1,5 @@
 """Agent Manager - manages agent lifecycle and workflow execution"""
+import time
 from typing import Any, Dict, List, Optional
 from .types import AgentTask
 from .registry import AgentRegistry
@@ -55,7 +56,7 @@ class AgentManager:
         }
 
     def _log(self, entry: str):
-        self.workflow_log.append({"time": __import__('time').time(), "entry": entry})
+        self.workflow_log.append({"time": time.time(), "entry": entry})
 
     def get_status(self) -> Dict[str, Any]:
         return {

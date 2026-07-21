@@ -2,12 +2,13 @@
 from typing import Any, Callable, Dict, List, Optional, Set
 from dataclasses import dataclass, field
 from enum import Enum
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import hashlib
 import hmac
 import time
 import uuid
 import logging
+import os
 
 
 class AuthProvider(Enum):
@@ -37,16 +38,28 @@ class UserPrincipal:
     token: Optional[str] = None
 
 
-class SecurityService:
-    """Authentication and authorization service"""
+@dataclass
+class TokenEntry:
+    principal: UserPrincipal
+    created_at: float
+    ttl: int
 
+
+class SecurityService:
     def __init__(self, logger: Any = None):
         self._providers: Dict[AuthProvider, Any] = {}
         self._policies: Dict[str, AuthorizationPolicy] = {}
-        self._api_keys: Dict[str, UserPrincipal] = {}
+        self._api_keys: Dict[str, tuple[UserPrincipal, float]] = {}
         self._secret_key: str = str(uuid.uuid4())
-        self._tokens: Dict[str, UserPrincipal] = {}
+        self._tokens: Dict[str, TokenEntry] = {}
         self._logger = logger
+        self._bcrypt_available = False
+        try:
+            import bcrypt as _bc
+            self._bc = _bc
+            self._bcrypt_available = True
+        except ImportError:
+            pass
 
     def configure(self, provider: AuthProvider, config: Dict[str, Any] = None):
         self._providers[provider] = config or {}
@@ -55,11 +68,11 @@ class SecurityService:
         self._policies[policy.name] = policy
 
     def add_api_key(self, key: str, principal: UserPrincipal):
-        self._api_keys[key] = principal
+        self._api_keys[key] = (principal, time.time())
 
     def generate_api_key(self, principal: UserPrincipal) -> str:
         key = f"ck_{uuid.uuid4().hex}"
-        self._api_keys[key] = principal
+        self._api_keys[key] = (principal, time.time())
         return key
 
     def revoke_api_key(self, key: str):
@@ -67,25 +80,32 @@ class SecurityService:
 
     def authenticate(self, token: str, provider: AuthProvider = None) -> Optional[UserPrincipal]:
         if provider == AuthProvider.API_KEY or provider is None:
-            principal = self._api_keys.get(token)
-            if principal:
+            entry = self._api_keys.get(token)
+            if entry:
+                principal, _ = entry
                 principal.authenticated = True
                 principal.token = token
                 return principal
 
         if provider == AuthProvider.JWT or provider is None:
-            principal = self._tokens.get(token)
-            if principal:
-                principal.authenticated = True
-                principal.token = token
-                return principal
+            entry = self._tokens.get(token)
+            if entry:
+                if time.time() - entry.created_at > entry.ttl:
+                    self._tokens.pop(token, None)
+                    return None
+                entry.principal.authenticated = True
+                entry.principal.token = token
+                return entry.principal
 
         return None
 
     def create_token(self, principal: UserPrincipal, ttl: int = 3600) -> str:
         token = f"ckt_{uuid.uuid4().hex}"
-        self._tokens[token] = principal
+        self._tokens[token] = TokenEntry(principal=principal, created_at=time.time(), ttl=ttl)
         return token
+
+    def revoke_token(self, token: str):
+        self._tokens.pop(token, None)
 
     def authorize(self, principal: UserPrincipal, policy_name: str) -> bool:
         policy = self._policies.get(policy_name)
@@ -107,10 +127,20 @@ class SecurityService:
         return {name: self.authorize(principal, name) for name in policy_names}
 
     def hash_password(self, password: str) -> str:
+        if self._bcrypt_available:
+            return self._bc.hashpw(password.encode(), self._bc.gensalt()).decode()
         salt = uuid.uuid4().hex
-        return f"{salt}:{hashlib.sha256((salt + password).encode()).hexdigest()}"
+        return f"sha256:{salt}:{hashlib.sha256((salt + password).encode()).hexdigest()}"
 
     def verify_password(self, password: str, hashed: str) -> bool:
+        if hashed.startswith("$2"):
+            try:
+                return self._bc.checkpw(password.encode(), hashed.encode())
+            except Exception:
+                return False
+        if hashed.startswith("sha256:"):
+            _, salt, hash_value = hashed.split(":", 2)
+            return hash_value == hashlib.sha256((salt + password).encode()).hexdigest()
         salt, hash_value = hashed.split(":", 1)
         return hash_value == hashlib.sha256((salt + password).encode()).hexdigest()
 

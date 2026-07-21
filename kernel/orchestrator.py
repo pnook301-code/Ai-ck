@@ -1,6 +1,8 @@
 """Unified OrchestratorEngine — connects Kernel + Agents + Functions + Memory + Knowledge Graph + Video"""
 
+import logging
 import time
+from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Callable
 from kernel.events import EventBus, Event
 from kernel.memory import MemoryOS, MemoryUnit, MemoryType, MemoryPriority
@@ -34,7 +36,7 @@ class OrchestratorEngine:
         )
         self.video_analyzer = VideoAnalyzer()
         self.watch_plugin = WatchPlugin(analyzer=self.video_analyzer)
-        self._watch_results: Dict[str, Any] = {}
+        self._watch_results: OrderedDict = OrderedDict()
 
         self._register_default_agents()
         self._setup_events()
@@ -61,56 +63,102 @@ class OrchestratorEngine:
         self.event_bus.on("kg.query", self._on_kg_query)
         self.event_bus.on("video.watch", self._on_video_watch)
 
+    async def _safe_handler(self, handler_name: str, coro, event: Event):
+        try:
+            return await coro
+        except Exception as exc:
+            logging.error("Handler %s failed for event %s: %s", handler_name, event.type, exc)
+            await self.event_bus.emit("orchestrator.handler.error", {
+                "handler": handler_name,
+                "event": event.type,
+                "error": str(exc),
+            })
+
     async def _on_remember(self, event: Event):
+        await self._safe_handler("_on_remember", self._do_remember(event), event)
+
+    async def _on_recall(self, event: Event):
+        await self._safe_handler("_on_recall", self._do_recall(event), event)
+
+    async def _on_fn_execute(self, event: Event):
+        await self._safe_handler("_on_fn_execute", self._do_fn_execute(event), event)
+
+    async def _on_agent_delegate(self, event: Event):
+        await self._safe_handler("_on_agent_delegate", self._do_agent_delegate(event), event)
+
+    async def _on_kg_add_entity(self, event: Event):
+        await self._safe_handler("_on_kg_add_entity", self._do_kg_add_entity(event), event)
+
+    async def _on_kg_add_relation(self, event: Event):
+        await self._safe_handler("_on_kg_add_relation", self._do_kg_add_relation(event), event)
+
+    async def _on_kg_query(self, event: Event):
+        await self._safe_handler("_on_kg_query", self._do_kg_query(event), event)
+
+    async def _on_video_watch(self, event: Event):
+        await self._safe_handler("_on_video_watch", self._do_video_watch(event), event)
+
+    async def _do_remember(self, event: Event):
         content = event.data.get("content", "")
-        mem_type = MemoryType(event.data.get("type", "episodic"))
+        try:
+            mem_type = MemoryType(event.data.get("type", "episodic"))
+        except (ValueError, KeyError):
+            mem_type = MemoryType.EPISODIC
         tags = event.data.get("tags", [])
         unit = self.memory.remember(content, mem_type, tags=tags)
         await self.event_bus.emit("memory.remembered", {"unit_id": unit.id})
 
-    async def _on_recall(self, event: Event):
+    async def _do_recall(self, event: Event):
         query = event.data.get("query", "")
         results = self.memory.recall(query)
         await self.event_bus.emit("memory.recalled", {"results": [u.to_dict() for u in results]})
 
-    async def _on_fn_execute(self, event: Event):
+    async def _do_fn_execute(self, event: Event):
         fn_id = event.data.get("fn_id", "")
         params = event.data.get("params", {})
         result = await self.fn_registry.execute(fn_id, params)
         await self.event_bus.emit("fn.executed", {"fn_id": fn_id, "result": result.output})
 
-    async def _on_agent_delegate(self, event: Event):
+    async def _do_agent_delegate(self, event: Event):
         agent_name = event.data.get("agent_name", "")
         task_desc = event.data.get("task", "")
         result = await self.agent_manager.delegate(agent_name, task_desc)
         await self.event_bus.emit("agent.delegated", {"agent": agent_name, "result": result})
 
-    async def _on_kg_add_entity(self, event: Event):
+    async def _do_kg_add_entity(self, event: Event):
         name = event.data.get("name", "")
         desc = event.data.get("description", "")
-        etype = EntityType(event.data.get("entity_type", "concept"))
+        try:
+            etype = EntityType(event.data.get("entity_type", "concept"))
+        except (ValueError, KeyError):
+            etype = EntityType.CONCEPT
         entity = KnowledgeUnit(name=name, description=desc, entity_type=etype)
         self.knowledge.add_entity(entity)
         await self.event_bus.emit("kg.entity.added", {"entity_id": entity.id})
 
-    async def _on_kg_add_relation(self, event: Event):
+    async def _do_kg_add_relation(self, event: Event):
         src = event.data.get("source_id", "")
         tgt = event.data.get("target_id", "")
-        rtype = RelationType(event.data.get("relation_type", "related_to"))
+        try:
+            rtype = RelationType(event.data.get("relation_type", "related_to"))
+        except (ValueError, KeyError):
+            rtype = RelationType.RELATED_TO
         rel = KnowledgeRelation(source_id=src, target_id=tgt, relation_type=rtype)
         self.knowledge.add_relation(rel)
         await self.event_bus.emit("kg.relation.added", {"source": src, "target": tgt})
 
-    async def _on_kg_query(self, event: Event):
+    async def _do_kg_query(self, event: Event):
         name = event.data.get("name", "")
         entity = self.knowledge.find_by_name(name)
         result = entity.to_dict() if entity else {"error": "not found"}
         await self.event_bus.emit("kg.query.result", result)
 
-    async def _on_video_watch(self, event: Event):
+    async def _do_video_watch(self, event: Event):
         params = event.data
         result = self.watch_plugin.execute(params, llm_callback=None)
         self._watch_results[result.id] = result
+        if len(self._watch_results) > 100:
+            self._watch_results.popitem(last=False)
         await self.event_bus.emit("video.watch.complete", {"result_id": result.id, "summary": result.summary})
 
     def bootstrap(self):
@@ -129,6 +177,11 @@ class OrchestratorEngine:
                                         tags=["input", source], source=source)
 
         extraction = self.knowledge_pipeline.process_text(input_text, source=source)
+        for entity in extraction.get("entities", []):
+            try:
+                self.knowledge_pipeline.schema.validate_entity(entity)
+            except Exception as exc:
+                logging.warning("Schema validation failed for entity %s: %s", entity, exc)
 
         plan = await self.orchestrator.plan(input_text)
         results = []
@@ -151,6 +204,8 @@ class OrchestratorEngine:
 
             if isinstance(result, dict) and "error" in result:
                 status = "skipped"
+            elif isinstance(result, dict):
+                status = result.get("status", "error")
             else:
                 status = result.status if isinstance(result.status, str) else result.status.value
 
@@ -201,9 +256,14 @@ class OrchestratorEngine:
         ep_unit = self.memory.remember(input_text, MemoryType.EPISODIC,
                                         tags=["input", source, "video.watch"], source=source)
 
+        try:
+            etype = params.get("entity_type", "document")
+            entity_type_val = EntityType(etype)
+        except (ValueError, KeyError):
+            entity_type_val = EntityType.DOCUMENT
         entity = KnowledgeUnit(
             name=params["source"], description=f"Video: {params['query']}",
-            entity_type=EntityType.DOCUMENT,
+            entity_type=entity_type_val,
             properties={"query": params["query"], "source_type": params["source_type"].value},
         )
         self.knowledge.add_entity(entity)

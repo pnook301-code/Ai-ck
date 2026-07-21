@@ -4,7 +4,7 @@ import json
 import os
 import time
 from typing import Any, Dict, List, Optional, Set, Tuple, Callable
-from collections import defaultdict
+from collections import defaultdict, deque
 from dataclasses import dataclass, field
 
 from .types import (
@@ -23,6 +23,8 @@ class KnowledgeGraph:
         self._persistence_path = persistence_path
         self._alias_index: Dict[str, str] = {}
         self._type_index: Dict[str, Set[str]] = defaultdict(set)
+        self._stats_cache: Optional[KnowledgeGraphStats] = None
+        self._stats_dirty: bool = True
 
         self._register_default_rules()
 
@@ -62,6 +64,8 @@ class KnowledgeGraph:
 
     @property
     def stats(self) -> KnowledgeGraphStats:
+        if not self._stats_dirty and self._stats_cache is not None:
+            return self._stats_cache
         by_entity = defaultdict(int)
         for entity in self._entities.values():
             by_entity[entity.entity_type.value] += 1
@@ -69,13 +73,15 @@ class KnowledgeGraph:
         for rels in self._relations.values():
             for r in rels:
                 by_relation[r.relation_type.value] += 1
-        return KnowledgeGraphStats(
+        self._stats_cache = KnowledgeGraphStats(
             total_entities=len(self._entities),
             total_relations=sum(len(v) for v in self._relations.values()),
             by_entity_type=dict(by_entity),
             by_relation_type=dict(by_relation),
             total_inferences=self._inference_count,
         )
+        self._stats_dirty = False
+        return self._stats_cache
 
     def add_entity(self, unit: KnowledgeUnit) -> str:
         self._entities[unit.id] = unit
@@ -85,6 +91,7 @@ class KnowledgeGraph:
                 self._alias_index[alias.lower()] = unit.id
         if unit.name:
             self._alias_index[unit.name.lower()] = unit.id
+        self._stats_dirty = True
         return unit.id
 
     def get_entity(self, entity_id: str) -> Optional[KnowledgeUnit]:
@@ -112,6 +119,7 @@ class KnowledgeGraph:
             rels[:] = [r for r in rels if r.target_id != entity_id]
         for rels in self._incoming.values():
             rels[:] = [r for r in rels if r.source_id != entity_id]
+        self._stats_dirty = True
         return True
 
     def add_relation(self, relation: KnowledgeRelation) -> bool:
@@ -121,6 +129,7 @@ class KnowledgeGraph:
             return False
         self._relations.setdefault(relation.source_id, []).append(relation)
         self._incoming.setdefault(relation.target_id, []).append(relation)
+        self._stats_dirty = True
         return True
 
     def get_relations(self, entity_id: str,
@@ -163,9 +172,9 @@ class KnowledgeGraph:
                  min_confidence: float = 0.0) -> List[Tuple[KnowledgeUnit, str, float]]:
         results = []
         visited = {start_id}
-        queue = [(start_id, 0)]
+        queue = deque([(start_id, 0)])
         while queue:
-            current, depth = queue.pop(0)
+            current, depth = queue.popleft()
             if depth >= max_depth:
                 continue
             rels = (self._relations.get(current, []) if direction == "outgoing"
@@ -185,7 +194,11 @@ class KnowledgeGraph:
     def find_path(self, from_id: str, to_id: str,
                   max_depth: int = 5) -> List[List[KnowledgeRelation]]:
         paths = []
+        deadline = time.time() + 2.0
+        max_paths = 50
         def _dfs(current, target, path, visited):
+            if time.time() > deadline or len(paths) >= max_paths:
+                return
             if len(path) > max_depth:
                 return
             if current == target:
@@ -207,6 +220,8 @@ class KnowledgeGraph:
             for rule in self._rules:
                 inferred += self._apply_rule(rule)
         self._inference_count += inferred
+        if inferred:
+            self._stats_dirty = True
         return inferred
 
     def _apply_rule(self, rule: InferenceRule) -> int:
@@ -276,68 +291,75 @@ class KnowledgeGraph:
         return {"entities": entities, "relations": relations}
 
     def save(self, path: str = "") -> str:
-        save_path = path or self._persistence_path
-        if not save_path:
-            save_path = "/tmp/knowledge_graph.json"
-        data = {
-            "entities": {eid: e.to_dict() for eid, e in self._entities.items()},
-            "relations": {
-                src: [r.to_dict() for r in rels]
-                for src, rels in self._relations.items()
-            },
-            "incoming": {
-                tgt: [r.to_dict() for r in rels]
-                for tgt, rels in self._incoming.items()
-            },
-            "inference_count": self._inference_count,
-            "timestamp": time.time(),
-        }
-        os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
-        with open(save_path, "w") as f:
-            json.dump(data, f, indent=2)
-        return save_path
+        try:
+            save_path = path or self._persistence_path
+            if not save_path:
+                save_path = "/tmp/knowledge_graph.json"
+            data = {
+                "entities": {eid: e.to_dict() for eid, e in self._entities.items()},
+                "relations": {
+                    src: [r.to_dict() for r in rels]
+                    for src, rels in self._relations.items()
+                },
+                "incoming": {
+                    tgt: [r.to_dict() for r in rels]
+                    for tgt, rels in self._incoming.items()
+                },
+                "inference_count": self._inference_count,
+                "timestamp": time.time(),
+            }
+            os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
+            with open(save_path, "w") as f:
+                json.dump(data, f, indent=2)
+            return save_path
+        except Exception:
+            return ""
 
     def load(self, path: str = "") -> bool:
-        load_path = path or self._persistence_path
-        if not load_path or not os.path.exists(load_path):
-            return False
-        with open(load_path) as f:
-            data = json.load(f)
-        self._entities = {}
-        self._relations = {}
-        self._incoming = {}
-        self._alias_index = {}
-        self._type_index = defaultdict(set)
+        try:
+            load_path = path or self._persistence_path
+            if not load_path or not os.path.exists(load_path):
+                return False
+            with open(load_path) as f:
+                data = json.load(f)
+            self._entities = {}
+            self._relations = {}
+            self._incoming = {}
+            self._alias_index = {}
+            self._type_index = defaultdict(set)
 
-        for eid, e_data in data.get("entities", {}).items():
-            entity_type = EntityType(e_data["entity_type"])
-            unit = KnowledgeUnit(
-                id=e_data["id"], name=e_data["name"],
-                description=e_data.get("description", ""),
-                entity_type=entity_type,
-                properties=e_data.get("properties", {}),
-                timestamp=e_data.get("timestamp", time.time()),
-                confidence=e_data.get("confidence", 1.0),
-                source=e_data.get("source", ""),
-                aliases=e_data.get("aliases", []),
-            )
-            self.add_entity(unit)
-
-        for src, rels in data.get("relations", {}).items():
-            for r_data in rels:
-                relation = KnowledgeRelation(
-                    source_id=r_data["source_id"],
-                    target_id=r_data["target_id"],
-                    relation_type=RelationType(r_data["relation_type"]),
-                    weight=r_data.get("weight", 1.0),
-                    properties=r_data.get("properties", {}),
-                    timestamp=r_data.get("timestamp", time.time()),
+            for eid, e_data in data.get("entities", {}).items():
+                entity_type = EntityType(e_data["entity_type"])
+                unit = KnowledgeUnit(
+                    id=e_data["id"], name=e_data["name"],
+                    description=e_data.get("description", ""),
+                    entity_type=entity_type,
+                    properties=e_data.get("properties", {}),
+                    timestamp=e_data.get("timestamp", time.time()),
+                    confidence=e_data.get("confidence", 1.0),
+                    source=e_data.get("source", ""),
+                    aliases=e_data.get("aliases", []),
                 )
-                self._relations.setdefault(src, []).append(relation)
-                self._incoming.setdefault(r_data["target_id"], []).append(relation)
+                self.add_entity(unit)
 
-        self._inference_count = data.get("inference_count", 0)
-        return True
+            for src, rels in data.get("relations", {}).items():
+                for r_data in rels:
+                    relation = KnowledgeRelation(
+                        source_id=r_data["source_id"],
+                        target_id=r_data["target_id"],
+                        relation_type=RelationType(r_data["relation_type"]),
+                        weight=r_data.get("weight", 1.0),
+                        properties=r_data.get("properties", {}),
+                        timestamp=r_data.get("timestamp", time.time()),
+                    )
+                    self._relations.setdefault(src, []).append(relation)
+                    self._incoming.setdefault(r_data["target_id"], []).append(relation)
+
+            self._inference_count = data.get("inference_count", 0)
+            self._stats_dirty = True
+            return True
+        except Exception:
+            return False
 
     def clear(self):
         self._entities.clear()
@@ -346,3 +368,5 @@ class KnowledgeGraph:
         self._alias_index.clear()
         self._type_index.clear()
         self._inference_count = 0
+        self._stats_cache = None
+        self._stats_dirty = True

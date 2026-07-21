@@ -3,7 +3,7 @@
 import os
 import tempfile
 import uuid
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from pathlib import Path
 
 from .types import FrameInfo, VideoMeta, VideoSourceType
@@ -22,9 +22,17 @@ class VideoFrameExtractor:
         frames = self._extract_frames(video_path, meta, max_frames)
         return frames, meta, video_path
 
+    def _validate_source(self, source: str) -> bool:
+        from urllib.parse import urlparse
+        parsed = urlparse(source)
+        return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+
     def _acquire_video(self, source: str, source_type: VideoSourceType,
                        time_start: Optional[float] = None,
                        time_end: Optional[float] = None) -> tuple[str, VideoMeta]:
+        if source_type == VideoSourceType.URL and not self._validate_source(source):
+            source_type = VideoSourceType.LOCAL
+
         if source_type == VideoSourceType.LOCAL:
             if not os.path.exists(source):
                 raise FileNotFoundError(f"Video not found: {source}")
@@ -70,6 +78,7 @@ class VideoFrameExtractor:
     def _extract_frames(self, video_path: str, meta: VideoMeta,
                         max_frames: int = 200) -> List[FrameInfo]:
         import cv2
+        import numpy as np
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
             raise RuntimeError(f"Cannot open video: {video_path}")
@@ -81,7 +90,8 @@ class VideoFrameExtractor:
         meta.height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
         sample_interval = max(1, int(video_fps / 2.0))
-        frames_buf = []
+        batch: List[Tuple[int, np.ndarray, float]] = []
+        selected: List[Tuple[int, np.ndarray, float, float]] = []
         frame_idx = 0
         while True:
             ret, frame = cap.read()
@@ -89,11 +99,23 @@ class VideoFrameExtractor:
                 break
             if frame_idx % sample_interval == 0:
                 ts = frame_idx / video_fps if video_fps > 0 else 0
-                frames_buf.append((frame_idx, frame, ts))
+                batch.append((frame_idx, frame, ts))
+                if len(batch) >= 50:
+                    self._detector.max_frames = max_frames
+                    selected.extend(self._detector.detect(batch))
+                    batch.clear()
+                    if len(selected) >= max_frames:
+                        break
             frame_idx += 1
         cap.release()
+
+        if batch:
+            self._detector.max_frames = max_frames
+            selected.extend(self._detector.detect(batch))
+            batch.clear()
+
         self._detector.max_frames = max_frames
-        selected = self._detector.detect(frames_buf)
+        selected = selected[:max_frames]
 
         frames_dir = os.path.join(self._work_dir, "frames")
         os.makedirs(frames_dir, exist_ok=True)

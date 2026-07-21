@@ -1,9 +1,10 @@
 """Audio transcriber — extracts audio from video and transcribes with timestamps"""
 
 import os
+import shutil
 import subprocess
 import tempfile
-from typing import Optional
+from typing import List, Optional
 
 from .types import Transcript, TranscriptSegment
 
@@ -16,6 +17,7 @@ class AudioTranscriber:
         self._compute_type = compute_type
         self._ffmpeg_path = ffmpeg_path or self._find_ffmpeg()
         self._model = None
+        self._audio_temp_dirs: List[str] = []
 
     def transcribe(self, video_path: str,
                    language: Optional[str] = None,
@@ -25,16 +27,16 @@ class AudioTranscriber:
         try:
             return self._transcribe_audio(audio_path, language)
         finally:
-            if os.path.exists(audio_path) and "ck_audio_" in audio_path:
-                os.unlink(audio_path)
+            audio_dir = os.path.dirname(audio_path)
+            if os.path.exists(audio_dir) and "ck_audio_" in audio_dir:
+                shutil.rmtree(audio_dir, ignore_errors=True)
 
     def _extract_audio(self, video_path: str,
                        time_start: Optional[float] = None,
                        time_end: Optional[float] = None) -> str:
-        audio_path = os.path.join(
-            tempfile.mkdtemp(prefix="ck_audio_"),
-            "audio.wav",
-        )
+        audio_dir = tempfile.mkdtemp(prefix="ck_audio_")
+        self._audio_temp_dirs.append(audio_dir)
+        audio_path = os.path.join(audio_dir, "audio.wav")
         cmd = [self._ffmpeg_path, "-y", "-i", video_path]
         if time_start is not None:
             cmd.extend(["-ss", str(time_start)])
@@ -91,6 +93,12 @@ class AudioTranscriber:
             full_parts.append(seg.text.strip())
         result.full_text = " ".join(full_parts)
         return result
+
+    def cleanup(self):
+        for d in self._audio_temp_dirs:
+            if os.path.exists(d) and "ck_audio_" in d:
+                shutil.rmtree(d, ignore_errors=True)
+        self._audio_temp_dirs.clear()
 
     def _find_ffmpeg(self) -> str:
         try:
