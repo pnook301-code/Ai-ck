@@ -1,0 +1,436 @@
+{
+  "catalog": "Nexus Core Enterprise AIOS",
+  "version": "1.0.0",
+  "last_updated": "2026-07-21",
+  "currency": "USD",
+  "products": [
+    {
+      "id": "prod_001",
+      "name": "Nexus Core — Enterprise License",
+      "category": "License",
+      "description": "Full IP transfer of the complete Nexus Core Enterprise AIOS. Includes kernel (18 modules), multi-agent runtime (7 types), 100 executable functions (10 categories), hybrid memory OS, CLI, API, and infrastructure code.",
+      "features": [
+        "Full source code ownership",
+        "Commercial license — no royalties",
+        "382+ test suite at 100% pass rate",
+        "18 kernel modules (DI, EventBus, CommandBus, Cache, Security, etc.)",
+        "7-agent swarm runtime (Orchestrator, Coder, Tester, DevOps, Researcher, Security, Reviewer)",
+        "100 executable functions across 10 categories",
+        "Hybrid vector + graph Memory OS",
+        "Docker Compose + Kubernetes + CI/CD + IaC"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 25000, "description": "Code + documentation + 30-day support" },
+        { "tier": "Premium", "price": 50000, "description": "Standard + 4h architecture walkthrough + IaC deploy + 90-day support" },
+        { "tier": "Enterprise", "price": 100000, "description": "Premium + dedicated engineering team (2 weeks) + SLA + custom integrations" }
+      ],
+      "deliverables": [
+        "GitHub repository ownership transfer",
+        "Full monorepo source code",
+        "Docker Compose + Kubernetes manifests",
+        "CI/CD pipeline configurations",
+        "Terraform IaC scripts (AWS/Azure)"
+      ]
+    },
+    {
+      "id": "prod_002",
+      "name": "Kernel Runtime Module Pack",
+      "category": "Module",
+      "description": "All 18 kernel modules as a standalone Python package. DI Container, EventBus, CommandBus, Cache, Security, Config, Logger, Scheduler, Plugin, Module, Registry, Pipeline, Metrics, Health, Runtime, Bootstrap, Bus.",
+      "features": [
+        "18 production-tested kernel modules",
+        "380+ kernel unit tests at 100%",
+        "DI Container with service lifetime management",
+        "EventBus with topic-based pub/sub",
+        "CommandBus with typed command dispatch",
+        "Cache layer with 501× measured speedup"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 5000, "description": "Kernel source + tests + documentation" },
+        { "tier": "Commercial", "price": 12000, "description": "Single + commercial license + 30-day support" }
+      ],
+      "deliverables": ["kernel/ directory source", "Test suite", "Documentation"]
+    },
+    {
+      "id": "prod_003",
+      "name": "Multi-Agent Runtime",
+      "category": "Agent",
+      "description": "Production-ready multi-agent system with 7 agent types, task decomposition, and EventBus-driven communication.",
+      "features": [
+        "7 agent types (Orchestrator, Coder, Tester, DevOps, Researcher, Security, Reviewer)",
+        "Automatic task decomposition",
+        "EventBus-driven communication",
+        "Agent lifecycle management",
+        "40 agent runtime tests at 100%"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 8000, "description": "Agent runtime source + tests" },
+        { "tier": "Commercial", "price": 15000, "description": "Single + commercial license + integration guide" }
+      ],
+      "deliverables": ["agents/ directory source", "40 test suite", "Integration documentation"]
+    },
+    {
+      "id": "prod_004",
+      "name": "100 Functions Library",
+      "category": "Function",
+      "description": "100 pre-built executable functions across 10 categories. Each function is async, JSON-interface, and pipeline-compatible.",
+      "features": [
+        "100 functions in 10 categories",
+        "Pipeline orchestrator with conditional execution",
+        "Stop-on-success and fallback support",
+        "26 function registry tests at 100%",
+        "All functions execute with 100% success rate"
+      ],
+      "categories": [
+        "System Core (10)", "Input Gateways (10)", "OSINT (10)", "Security Scanning (10)",
+        "Offensive Actions (10)", "Storage & Analytics (10)", "AI & MCP (10)",
+        "Network & Proxy (10)", "Termux & Mobile (10)", "Pipeline Orchestrator (10)"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 6000, "description": "Full functions library source + tests" },
+        { "tier": "Commercial", "price": 10000, "description": "Single + commercial license + pipeline examples" }
+      ],
+      "deliverables": ["fn/ directory with all 12 files", "26 test suite", "Pipeline documentation"]
+    },
+    {
+      "id": "prod_005",
+      "name": "Memory OS Engine",
+      "category": "Memory",
+      "description": "Hybrid vector + graph memory system with unified recall. Vector store (128-dim cosine similarity) + graph store (adjacency, BFS, path finding).",
+      "features": [
+        "In-memory vector store (128-dim, numpy, cosine similarity)",
+        "Graph store with node/edge management",
+        "BFS traversal and path finding",
+        "Unified hybrid recall (vector + graph combined)",
+        "22 memory OS tests at 100%"
+      ],
+      "performance": {
+        "vector_search": "< 5ms for 1,000 documents",
+        "graph_traversal": "< 2ms for 500 nodes"
+      },
+      "price_tiers": [
+        { "tier": "Single", "price": 4000, "description": "Memory OS source + tests" },
+        { "tier": "Commercial", "price": 8000, "description": "Single + commercial license + upgrade path to ChromaDB/Neo4j" }
+      ],
+      "deliverables": ["memory/ directory source", "22 test suite", "Architecture documentation"]
+    },
+    {
+      "id": "prod_006",
+      "name": "Infrastructure Pack (Docker + K8s + CI/CD)",
+      "category": "Infrastructure",
+      "description": "Ready-to-deploy infrastructure configurations for running Nexus Core in production.",
+      "features": [
+        "Docker Compose (full stack, single command)",
+        "Kubernetes manifests (multi-node deployment)",
+        "GitHub Actions CI/CD pipelines",
+        "Terraform IaC scripts (AWS ECS/EKS, Azure AKS)",
+        "Health check endpoints",
+        "Prometheus metrics integration"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 3000, "description": "Infrastructure configurations + documentation" },
+        { "tier": "Commercial", "price": 7000, "description": "Single + deployment support + customization" }
+      ],
+      "deliverables": ["infrastructure/ directory", "CI/CD pipeline files", "Deployment guide"]
+    },
+    {
+      "id": "prod_007",
+      "name": "Enterprise Security Module",
+      "category": "Security",
+      "description": "Zero-Trust security layer: RBAC, OIDC/SAML/OAuth2, mTLS, AES-256 encryption, audit logging.",
+      "features": [
+        "RBAC at kernel level",
+        "OIDC, SAML 2.0, OAuth 2.0 support",
+        "mTLS for inter-service communication",
+        "AES-256 token encryption",
+        "JWT rotation and session management",
+        "Full audit trail",
+        "OWASP Top 10 protection"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 5000, "description": "Security module source + tests" },
+        { "tier": "Commercial", "price": 12000, "description": "Single + penetration testing report + compliance documentation" }
+      ],
+      "deliverables": ["Security module source", "Test suite", "Compliance documentation"]
+    },
+    {
+      "id": "prod_008",
+      "name": "Nexus Engine (Legacy MVP)",
+      "category": "Legacy",
+      "description": "Original CK-NEXUS MVP v0.95 — fully functional multi-provider AI chat engine with agent swarm, LINE/Telegram integration, and web dashboard.",
+      "features": [
+        "Multi-provider AI chat (OpenAI, Groq, OpenRouter, Ollama)",
+        "SQLite-based memory system",
+        "7-agent orchestration system",
+        "LINE messaging integration",
+        "Telegram bot gateway",
+        "Web dashboard",
+        "Plugin system",
+        "VPS cluster management"
+      ],
+      "benchmarks": {
+        "startup": "1.47s",
+        "memory_retrieval": "1.2ms",
+        "plugin_load": "17.8ms",
+        "cache_speedup": "501x",
+        "test_pass": "100%"
+      },
+      "price_tiers": [
+        { "tier": "Single", "price": 10000, "description": "Full legacy source + documentation" },
+        { "tier": "Commercial", "price": 20000, "description": "Single + commercial license + migration guide to v1.0" }
+      ],
+      "deliverables": ["Full /workspace/ck-nexus source", "Documentation", "Migration guide"]
+    },
+    {
+      "id": "prod_009",
+      "name": "Integration Connectors (LINE + Telegram)",
+      "category": "Connector",
+      "description": "Production-tested messaging integrations with LINE OAuth2 and Telegram bot gateway.",
+      "features": [
+        "LINE OAuth2 authentication flow",
+        "LINE message sending/receiving",
+        "Encrypted token storage",
+        "Telegram bot command processing",
+        "Telegram notification gateway",
+        "Multi-session support"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 3000, "description": "Connector source + tests" },
+        { "tier": "Commercial", "price": 6000, "description": "Single + setup assistance + bot deployment guide" }
+      ],
+      "deliverables": ["connectors/ source", "OAuth configuration guide", "Bot deployment guide"]
+    },
+    {
+      "id": "prod_010",
+      "name": "Nexus Core + Infrastructure Bundle",
+      "category": "Bundle",
+      "description": "Everything in Nexus Core Enterprise License + Infrastructure Pack at a discounted bundle price.",
+      "includes": ["prod_001", "prod_006"],
+      "price_tiers": [
+        { "tier": "Standard", "price": 27000, "description": "Enterprise License + Infrastructure Pack — save $1,000" },
+        { "tier": "Premium", "price": 55000, "description": "Standard + 4h walkthrough + 90-day support" },
+        { "tier": "Enterprise", "price": 105000, "description": "Premium + dedicated engineering + SLA" }
+      ]
+    },
+    {
+      "id": "prod_011",
+      "name": "Full Stack Bundle",
+      "category": "Bundle",
+      "description": "All Nexus Core components at a comprehensive bundle price.",
+      "includes": ["prod_001", "prod_005", "prod_006", "prod_007"],
+      "price_tiers": [
+        { "tier": "Standard", "price": 35000, "description": "Full stack — save $4,000 off individual pricing" },
+        { "tier": "Premium", "price": 65000, "description": "Standard + 4h walkthrough + 90-day support" },
+        { "tier": "Enterprise", "price": 120000, "description": "Premium + dedicated engineering + SLA + custom features" }
+      ]
+    },
+    {
+      "id": "prod_012",
+      "name": "Architecture Consultation (4-Hour Session)",
+      "category": "Service",
+      "description": "Direct session with the core engineering team. Covers architecture decisions, deployment topology, scaling strategies, and customization roadmap.",
+      "features": [
+        "4-hour video call with lead engineers",
+        "Architecture deep-dive",
+        "Deployment topology design",
+        "Scaling strategy consultation",
+        "Custom integration planning"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 2000, "description": "4-hour session + recording + summary document" },
+        { "tier": "Premium", "price": 5000, "description": "Standard + follow-up session + architecture review document" }
+      ]
+    },
+    {
+      "id": "prod_013",
+      "name": "Priority Support (30-Day)",
+      "category": "Service",
+      "description": "Direct Slack/Telegram channel with the engineering team for questions, hotfixes, and deployment assistance.",
+      "features": [
+        "Direct Slack/Telegram support channel",
+        "Response within 4 hours (business hours)",
+        "Hotfix prioritization",
+        "Deployment assistance",
+        "Code review"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 1500, "description": "30-day support (business hours)" },
+        { "tier": "Premium", "price": 4000, "description": "30-day support (24/7) + dedicated engineer" },
+        { "tier": "Annual", "price": 12000, "description": "12-month support (business hours) + quarterly architecture reviews" }
+      ]
+    },
+    {
+      "id": "prod_014",
+      "name": "Kubernetes Deployment Service",
+      "category": "Service",
+      "description": "Full deployment of Nexus Core on your Kubernetes cluster — EKS, AKS, or self-managed.",
+      "features": [
+        "Cluster setup and configuration",
+        "Helm chart creation",
+        "Ingress and TLS setup",
+        "Monitoring and alerting",
+        "Load testing",
+        "Documentation"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 5000, "description": "K8s deployment on existing cluster" },
+        { "tier": "Premium", "price": 10000, "description": "Standard + cluster creation + CI/CD integration + 1-week support" }
+      ]
+    },
+    {
+      "id": "prod_015",
+      "name": "Custom Function Development (Per Function)",
+      "category": "Service",
+      "description": "Custom function development to extend Nexus Core's 100-function library. Your specification, our implementation.",
+      "features": [
+        "Custom async function development",
+        "JSON interface compliance",
+        "Pipeline compatibility",
+        "Test suite inclusion",
+        "Documentation"
+      ],
+      "price_tiers": [
+        { "tier": "Basic", "price": 500, "description": "Simple function (1-2 inputs, 1 output)" },
+        { "tier": "Standard", "price": 1500, "description": "Medium complexity (multi-step, external API)" },
+        { "tier": "Complex", "price": 3500, "description": "Complex function (stateful, multi-API pipeline)" }
+      ]
+    },
+    {
+      "id": "prod_016",
+      "name": "Custom Agent Development (Per Agent)",
+      "category": "Service",
+      "description": "Custom agent development following BaseAgent pattern. Your use case, our implementation.",
+      "features": [
+        "Custom agent implementation",
+        "EventBus integration",
+        "Task decomposition logic",
+        "Test suite inclusion",
+        "Documentation"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 3000, "description": "Custom agent source + tests + documentation" },
+        { "tier": "Premium", "price": 7000, "description": "Standard + LLM integration + deployment + 2-week support" }
+      ]
+    },
+    {
+      "id": "prod_017",
+      "name": "Security Audit & Penetration Test",
+      "category": "Service",
+      "description": "Comprehensive security review of your Nexus Core deployment, including penetration testing and compliance gap analysis.",
+      "features": [
+        "Full source code security review",
+        "OWASP Top 10 penetration test",
+        "Dependency vulnerability scan",
+        "Configuration review",
+        "Compliance gap analysis (GDPR/ISO 27001)",
+        "Detailed remediation report"
+      ],
+      "price_tiers": [
+        { "tier": "Standard", "price": 5000, "description": "Code review + automated scan + report" },
+        { "tier": "Premium", "price": 12000, "description": "Standard + manual penetration test + remediation support" }
+      ]
+    },
+    {
+      "id": "prod_018",
+      "name": "Nexus Core LLM Failover Client",
+      "category": "Tool",
+      "description": "Standalone LLM client with automatic provider failover, circuit breaker pattern, and per-provider success rate tracking.",
+      "features": [
+        "Multi-provider failover (OpenAI, Groq, OpenRouter, Ollama)",
+        "Circuit breaker pattern",
+        "Per-provider success rate tracking",
+        "Automatic retry with backoff",
+        "JSON interface"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 2000, "description": "Source + tests + documentation" },
+        { "tier": "Commercial", "price": 4000, "description": "Single + commercial license + integration guide" }
+      ]
+    },
+    {
+      "id": "prod_019",
+      "name": "Nexus Core Vector Memory Plugin",
+      "category": "Tool",
+      "description": "Standalone in-memory vector store with 128-dim embeddings and cosine similarity search. Drop-in for any Python project.",
+      "features": [
+        "128-dim hash-based embeddings",
+        "Cosine similarity search",
+        "Metadata filtering",
+        "Top-K retrieval",
+        "No external dependencies (numpy only)"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 1500, "description": "Source + tests + documentation" },
+        { "tier": "Commercial", "price": 3500, "description": "Single + commercial license + upgrade path to ChromaDB" }
+      ]
+    },
+    {
+      "id": "prod_020",
+      "name": "Nexus Core Pipeline Orchestrator",
+      "category": "Tool",
+      "description": "Standalone function pipeline engine supporting conditional execution, stop-on-success, and fallback chains.",
+      "features": [
+        "Conditional function chaining",
+        "Stop-on-success optimization",
+        "Fallback chain support",
+        "Parallel dispatch",
+        "JSON pipeline definitions"
+      ],
+      "price_tiers": [
+        { "tier": "Single", "price": 2000, "description": "Source + tests + documentation + examples" },
+        { "tier": "Commercial", "price": 4500, "description": "Single + commercial license + custom pipeline templates" }
+      ]
+    }
+  ],
+  "discounts": [
+    {
+      "code": "LAUNCH2026",
+      "description": "Early adopter discount — 20% off any product",
+      "percentage": 20,
+      "valid_until": "2026-12-31",
+      "max_uses": 50
+    },
+    {
+      "code": "BUNDLE10",
+      "description": "Additional 10% off any bundle product",
+      "percentage": 10,
+      "valid_until": "2026-12-31",
+      "applies_to": ["Bundle"]
+    },
+    {
+      "code": "REFERRAL",
+      "description": "Referral discount — 15% off for both referrer and referee",
+      "percentage": 15,
+      "valid_until": "2027-06-30",
+      "max_uses": 100
+    },
+    {
+      "code": "EDUCATION",
+      "description": "Academic institution discount — 40% off",
+      "percentage": 40,
+      "valid_until": "2027-06-30",
+      "verification_required": true
+    },
+    {
+      "code": "YCOMBINATOR",
+      "description": "YC startup discount — 25% off Enterprise License",
+      "percentage": 25,
+      "valid_until": "2026-12-31",
+      "verification_required": true
+    }
+  ],
+  "payment_methods": [
+    {"method": "Wire Transfer", "details": "Bank details provided on invoice"},
+    {"method": "Cryptocurrency", "details": "BTC, ETH, USDT (ERC-20/TRC-20)"},
+    {"method": "Escrow", "details": "Available via Acquire.com or Flippa platform"},
+    {"method": "Credit Card", "details": "Via Stripe (for products under $10,000)"}
+  ],
+  "notes": [
+    "All prices in USD",
+    "Enterprise licenses include full IP transfer with commercial terms",
+    "Source code delivered via GitHub repository ownership transfer",
+    "Support packages begin from date of transfer",
+    "Custom development scoped and quoted separately",
+    "Discounts cannot be combined unless explicitly stated"
+  ]
+}
