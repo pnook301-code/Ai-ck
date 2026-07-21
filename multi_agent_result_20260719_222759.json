@@ -1,0 +1,29 @@
+{
+  "task": "เขียนสคริปต์ Python สำหรับสแกนพอร์ตที่เปิดอยู่บนเซิร์ฟเวอร์",
+  "final_work": "AI model ไม่พร้อมใช้งาน",
+  "history": [
+    {
+      "round": 1,
+      "work_preview": "AI model ไม่พร้อมใช้งาน",
+      "score": 5,
+      "passed": false,
+      "feedback": "AI model ไม่พร้อมใช้งาน"
+    },
+    {
+      "round": 2,
+      "work_preview": "AI model ไม่พร้อมใช้งาน",
+      "score": 5,
+      "passed": false,
+      "feedback": "AI model ไม่พร้อมใช้งาน"
+    },
+    {
+      "round": 3,
+      "work_preview": "AI model ไม่พร้อมใช้งาน",
+      "score": 5,
+      "passed": false,
+      "feedback": "AI model ไม่พร้อมใช้งาน"
+    }
+  ],
+  "total_rounds": 3,
+  "final_score": 5
+}

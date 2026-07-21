@@ -1,0 +1,67 @@
+#!/bin/bash
+# CK-NEXUS Quick Launcher
+cd "$(dirname "$0")"
+
+case "${1:-help}" in
+    memory)
+        python3 nexus_memory_commands.py "$@"
+        ;;
+    cli|chat)
+        python3 cli/main.py
+        ;;
+    dashboard|web|server)
+        python3 cli/dashboard.py "${2:-8080}"
+        ;;
+    test)
+        python3 tests/test_all.py
+        ;;
+    status)
+        python3 -c "
+import sys; sys.path.insert(0,'.')
+from nexus_engine import NexusEngine
+import json
+e = NexusEngine()
+s = e.memory.get_stats()
+p = e.router.get_status()
+l = e.line_auth.get_status()
+print(json.dumps({'stats':s,'providers':p,'line':l}, indent=2, default=str))
+e.shutdown()
+"
+        ;;
+    line-setup)
+        python3 scripts/setup_line.py
+        ;;
+    monitor)
+        python3 -c "
+import psutil, os, time
+while True:
+    os.system('clear' if os.name != 'nt' else 'cls')
+    cpu = psutil.cpu_percent(interval=1)
+    mem = psutil.virtual_memory()
+    disk = psutil.disk_usage('/')
+    print(f'CPU: {cpu}%  RAM: {mem.percent}%  DISK: {disk.percent}%')
+    print(f'RAM: {mem.used//1024//1024}MB / {mem.total//1024//1024}MB')
+    time.sleep(2)
+" 2>/dev/null || echo "Install psutil: pip install psutil"
+        ;;
+    backup)
+        tar czf "/tmp/ck-nexus-backup-$(date +%Y%m%d).tar.gz" -C /workspace ck-nexus
+        echo "Backup: /tmp/ck-nexus-backup-$(date +%Y%m%d).tar.gz"
+        ;;
+    help|*)
+        echo "CK-NEXUS AI OS v0.1.0"
+        echo ""
+        echo "Usage: ./nexus <command>"
+        echo ""
+        echo "Commands:"
+        echo "  memory         - Memory OS commands (add/search/stats/clear)"
+        echo "  cli/chat       - Interactive CLI"
+        echo "  dashboard      - Web dashboard (port 8080)"
+        echo "  test           - Run tests"
+        echo "  status         - System status"
+        echo "  line-setup     - LINE OAuth setup"
+        echo "  monitor        - System monitor"
+        echo "  backup         - Backup project"
+        echo "  help           - Show this help"
+        ;;
+esac

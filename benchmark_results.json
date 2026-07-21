@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-19 18:53:54",
+  "memory": {
+    "sqlite_write_100": 85,
+    "sqlite_read_100": 659
+  },
+  "api": {
+    "groq": {
+      "avg_ms": 511,
+      "min_ms": 415,
+      "max_ms": 704,
+      "tps": 159.2,
+      "runs": 3,
+      "errors": 0
+    },
+    "openrouter": {
+      "avg_ms": 8276,
+      "min_ms": 3435,
+      "max_ms": 13118,
+      "tps": 15.1,
+      "runs": 2,
+      "errors": 0
+    },
+    "openai": {
+      "error": "all_failed",
+      "errors": 2
+    }
+  },
+  "concurrent": {
+    "total_ms": 592,
+    "avg_per_request": 456,
+    "successful": 5,
+    "failed": 0
+  },
+  "cache": {
+    "cache_hit_1k": 32,
+    "cache_miss_100": 160,
+    "speedup": "501x faster"
+  }
+}
