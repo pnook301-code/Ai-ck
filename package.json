@@ -1,0 +1,92 @@
+{
+  "name": "ck-nexus-aios",
+  "version": "1.0.0",
+  "description": "CK-NEXUS Enterprise AI Operating System",
+  "private": true,
+  "workspaces": [
+    "kernel/*",
+    "agents/*",
+    "memory/*",
+    "knowledge/*",
+    "workflow/*",
+    "intelligence/*",
+    "capability/*",
+    "plugins/*",
+    "connectors/*",
+    "api/*",
+    "cli/*",
+    "dashboard/*",
+    "infrastructure/*",
+    "marketplace/*",
+    "observability/*",
+    "security/*",
+    "governance/*",
+    "deployment/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "kernel:dev": "cd kernel/runtime && python -m kernel.runtime",
+    "kernel:build": "cd kernel && python -m build",
+    "agents:dev": "cd agents && python -m agents.manager",
+    "api:dev": "cd api && uvicorn main:app --reload",
+    "dashboard:dev": "cd dashboard && npm run dev",
+    "cli:dev": "cd cli && npm run dev",
+    "docker:build": "docker-compose -f infrastructure/docker/docker-compose.yml build",
+    "docker:up": "docker-compose -f infrastructure/docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f infrastructure/docker/docker-compose.yml down",
+    "k8s:deploy": "kubectl apply -f infrastructure/kubernetes/",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:e2e": "turbo run test:e2e",
+    "docs:build": "cd docs && npm run build",
+    "docs:serve": "cd docs && npm run serve"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.0",
+    "typescript": "^5.4.0",
+    "prettier": "^3.2.0",
+    "eslint": "^8.57.0",
+    "@types/node": "^20.12.0",
+    "vitest": "^1.4.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "esbuild": "^0.20.0",
+    "tsx": "^4.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "python": ">=3.11.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "turbo": {
+    "pipeline": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**", "build/**"]
+      },
+      "dev": {
+        "cache": false,
+        "persistent": true
+      },
+      "test": {
+        "dependsOn": [],
+        "outputs": ["coverage/**"]
+      },
+      "lint": {
+        "outputs": []
+      },
+      "test:unit": {
+        "outputs": ["coverage/**"]
+      },
+      "test:integration": {
+        "dependsOn": ["build"]
+      },
+      "test:e2e": {
+        "dependsOn": ["build", "docker:up"]
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# CK-NEXUS AIOS Enterprise Monorepo
+
+## Turborepo Configuration
+
+```json
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": [],
+      "outputs": ["coverage/**"]
+    },
+    "lint": {},
+    "test:unit": {
+      "outputs": ["coverage/**"]
+    },
+    "test:integration": {
+      "dependsOn": ["build"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build", "docker:up"]
+    }
+  },
+  "globalEnv": ["NODE_ENV", "PYTHONPATH", "CK_NEXUS_CONFIG"]
+}
+```
