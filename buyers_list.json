@@ -1,0 +1,247 @@
+{
+  "list_name": "Nexus Core Enterprise — Target Buyers",
+  "version": "1.0.0",
+  "last_updated": "2026-07-21",
+  "total_buyers": 10,
+  "buyers": [
+    {
+      "id": "buyer_001",
+      "company": "TechVentures Capital",
+      "type": "Acquisition Firm",
+      "tier": "Platinum",
+      "budget_range": "$50,000 - $200,000",
+      "interest": ["Full IP Acquisition", "Enterprise License"],
+      "description": "Mid-stage technology acquisition firm specializing in AI infrastructure. Acquires 3-5 companies per year. Previous acquisitions include ML pipeline tools and data platform startups.",
+      "contact": {
+        "name": "Sarah Chen",
+        "title": "Managing Partner",
+        "email": "sarah.chen@techventures-capital.com",
+        "linkedin": "linkedin.com/in/sarachen-tvc",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Prefers products with existing test suites and documentation. ROI-driven decision making.",
+      "status": "cold",
+      "priority": "high"
+    },
+    {
+      "id": "buyer_002",
+      "company": "NexGen AI Solutions",
+      "type": "AI Startup",
+      "tier": "Gold",
+      "budget_range": "$20,000 - $50,000",
+      "interest": ["Enterprise License", "Agent Runtime", "Infrastructure Bundle"],
+      "description": "Seed-stage AI startup building enterprise automation tools. Currently raising Series A. Needs a production-ready AI backend to accelerate product launch.",
+      "contact": {
+        "name": "Marcus Johnson",
+        "title": "CTO & Co-Founder",
+        "email": "marcus@nexgen-ai.io",
+        "linkedin": "linkedin.com/in/marcusj-nexgen",
+        "preferred_channel": "Slack"
+      },
+      "engagement_history": [],
+      "notes": "Technical founder — will evaluate code quality and test coverage first. Impressed by 382+ tests at 100%.",
+      "status": "cold",
+      "priority": "high"
+    },
+    {
+      "id": "buyer_003",
+      "company": "GlobalSys Enterprises",
+      "type": "Enterprise Corp",
+      "tier": "Platinum",
+      "budget_range": "$100,000 - $500,000",
+      "interest": ["Enterprise License", "Full Stack Bundle", "Security Audit"],
+      "description": "Fortune 500 company with 15,000+ employees. Digital transformation initiative to deploy internal AI platform across 20 departments. Requires SOC2/GDPR compliance.",
+      "contact": {
+        "name": "Anita Desai",
+        "title": "VP of Engineering",
+        "email": "anita.desai@globalsys.com",
+        "linkedin": "linkedin.com/in/anitadesai-globalsys",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Enterprise procurement cycle (60-90 days). Requires compliance documentation, security review, and architecture walkthrough. Budget already allocated for FY2026 Q3.",
+      "status": "cold",
+      "priority": "high"
+    },
+    {
+      "id": "buyer_004",
+      "company": "CloudStack Inc.",
+      "type": "Platform Company",
+      "tier": "Gold",
+      "budget_range": "$20,000 - $60,000",
+      "interest": ["Enterprise License", "Infrastructure Pack", "Custom Agent Development"],
+      "description": "B2B SaaS platform with 500+ enterprise customers. Wants to embed AI orchestration into their existing product. 50-person engineering team.",
+      "contact": {
+        "name": "David Park",
+        "title": "Head of Platform",
+        "email": "david.park@cloudstack.io",
+        "linkedin": "linkedin.com/in/davidpark-cs",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Interested in white-labeling the agent runtime. Needs custom agent development for their domain.",
+      "status": "cold",
+      "priority": "medium"
+    },
+    {
+      "id": "buyer_005",
+      "company": "DataForge Labs",
+      "type": "AI Research Lab",
+      "tier": "Silver",
+      "budget_range": "$5,000 - $15,000",
+      "interest": ["100 Functions Library", "Memory OS", "Pipeline Orchestrator"],
+      "description": "University-affiliated AI research lab. Working on multi-agent coordination and knowledge graph research. Needs the function library and memory stack for experiments.",
+      "contact": {
+        "name": "Dr. Elena Vogt",
+        "title": "Principal Researcher",
+        "email": "elena.vogt@dataforge.edu",
+        "linkedin": "linkedin.com/in/elenavogt-dataforge",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Academic budget constraints. EDUCATIONAL discount code applicable (40% off). Potential for joint research publication.",
+      "status": "cold",
+      "priority": "medium"
+    },
+    {
+      "id": "buyer_006",
+      "company": "SecureShield Cyber",
+      "type": "Cybersecurity Firm",
+      "tier": "Gold",
+      "budget_range": "$15,000 - $40,000",
+      "interest": ["Security Module", "Security Audit", "Kubernetes Deployment"],
+      "description": "Cybersecurity consulting firm expanding into AI security. Wants to use Nexus Core's security module as foundation for their AI security assessment tool.",
+      "contact": {
+        "name": "Alex Rivera",
+        "title": "Director of Security Engineering",
+        "email": "alex.rivera@secureshield.io",
+        "linkedin": "linkedin.com/in/alexrivera-secureshield",
+        "preferred_channel": "Signal"
+      },
+      "engagement_history": [],
+      "notes": "Interested in penetration testing methodology. May want joint security audit of Nexus Core first.",
+      "status": "cold",
+      "priority": "medium"
+    },
+    {
+      "id": "buyer_007",
+      "company": "QuickScale Ventures",
+      "type": "Startup Studio",
+      "tier": "Silver",
+      "budget_range": "$5,000 - $20,000",
+      "interest": ["Enterprise License", "Infrastructure Pack", "Priority Support"],
+      "description": "Startup studio that builds 2-3 AI companies per year. Wants to use Nexus Core as the technical foundation for new spinouts. Budget-conscious but recurring buyer potential.",
+      "contact": {
+        "name": "Yuki Tanaka",
+        "title": "Technical Partner",
+        "email": "yuki@quickscale.vc",
+        "linkedin": "linkedin.com/in/yukitanaka-qs",
+        "preferred_channel": "Slack"
+      },
+      "engagement_history": [],
+      "notes": "Evaluating for Q3 2026 spinout. May license per-spinout or buy Enterprise License for unlimited use. LAUNCH2026 discount applicable.",
+      "status": "cold",
+      "priority": "medium"
+    },
+    {
+      "id": "buyer_008",
+      "company": "OpenSource Collective",
+      "type": "Community",
+      "tier": "Bronze",
+      "budget_range": "$1,000 - $5,000",
+      "interest": ["Kernel Runtime Module Pack", "Memory OS", "Pipeline Engine"],
+      "description": "Open-source foundation interested in the kernel and memory components. May sponsor development or purchase select modules.",
+      "contact": {
+        "name": "Liam O'Brien",
+        "title": "Technical Steering Committee",
+        "email": "liam@opensourcecollective.org",
+        "linkedin": "linkedin.com/in/liamobrien-osc",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Not primary target — low budget but good for community credibility and referrals.",
+      "status": "cold",
+      "priority": "low"
+    },
+    {
+      "id": "buyer_009",
+      "company": "AsiaTech Partners",
+      "type": "VAR / Reseller",
+      "tier": "Gold",
+      "budget_range": "$30,000 - $80,000",
+      "interest": ["Full Stack Bundle", "Custom Integration", "White-Label Rights"],
+      "description": "Technology value-added reseller serving enterprise clients across Southeast Asia. Wants to resell Nexus Core as part of their AI transformation package.",
+      "contact": {
+        "name": "Somchai Wattana",
+        "title": "Managing Director",
+        "email": "somchai@asiatechpartners.co.th",
+        "linkedin": "linkedin.com/in/somchaiw-asia",
+        "preferred_channel": "LINE"      },
+      "engagement_history": [],
+      "notes": "Interested in white-label/reseller arrangement. Has 20+ enterprise clients waiting for AI solutions. LINE integration is a key selling point for Thai market.",
+      "status": "cold",
+      "priority": "high"
+    },
+    {
+      "id": "buyer_010",
+      "company": "Quantum Leap Robotics",
+      "type": "Robotics / Edge AI",
+      "tier": "Silver",
+      "budget_range": "$10,000 - $25,000",
+      "interest": ["Kernel Runtime Module Pack", "100 Functions Library"],
+      "description": "Robotics startup building autonomous warehouse systems. Needs a lightweight, deterministic kernel for edge deployment. Interested in the compiled kernel modules.",
+      "contact": {
+        "name": "Dr. Wei Zhang",
+        "title": "Head of AI",
+        "email": "wei.zhang@quantumleap.bot",
+        "linkedin": "linkedin.com/in/weizhang-qlr",
+        "preferred_channel": "Email"
+      },
+      "engagement_history": [],
+      "notes": "Needs Python 3.11+ compatibility. Edge deployment constraints (Raspberry Pi / Jetson). May commission custom function development for robotics-specific operations.",
+      "status": "cold",
+      "priority": "low"
+    }
+  ],
+  "tiers": {
+    "Platinum": {
+      "description": "High-value buyers ($50k+). VIP handling, direct CTO-to-CTO engagement, custom demo",
+      "color": "#E5E4E2",
+      "benefits": ["Priority response (< 12 hours)", "Custom demo environment", "Architecture walkthrough included", "Custom SLA negotiation"]
+    },
+    "Gold": {
+      "description": "Medium-value buyers ($15k-$50k). Standard engagement with technical deep-dive",
+      "color": "#FFD700",
+      "benefits": ["Response within 24 hours", "Standard demo", "Technical Q&A session", "Documentation package"]
+    },
+    "Silver": {
+      "description": "Lower-value buyers ($5k-$15k). Self-service with email support",
+      "color": "#C0C0C0",
+      "benefits": ["Response within 48 hours", "Product documentation", "Community access"]
+    },
+    "Bronze": {
+      "description": "Entry-level / community. Self-service only",
+      "color": "#CD7F32",
+      "benefits": ["Community forum access", "Public documentation"]
+    }
+  },
+  "engagement_stages": [
+    "cold",
+    "contacted",
+    "demo_scheduled",
+    "demo_completed",
+    "technical_review",
+    "negotiation",
+    "legal_review",
+    "closed_won",
+    "closed_lost"
+  ],
+  "notes": [
+    "All buyers pre-qualified by budget range and interest alignment",
+    "Platinum buyers get direct engineering team access",
+    "Engagement history updated after each interaction",
+    "Priority re-evaluated weekly based on engagement signals",
+    "Referral program available — existing buyers get 15% referral fee"
+  ]
+}
