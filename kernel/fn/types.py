@@ -20,6 +20,7 @@ class FunctionCategory(Enum):
     CLOUD = "cloud"
     ENTERPRISE = "enterprise"
     KUBERNETES = "kubernetes"
+    BILLING = "billing"
 
 
 class FunctionStatus(Enum):

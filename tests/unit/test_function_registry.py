@@ -11,7 +11,7 @@ def registry():
 
 class TestRegistration:
     def test_registers_all_110(self, registry):
-        assert len(registry._functions) == 142
+        assert len(registry._functions) == 152
 
     def test_categories_have_functions(self, registry):
         for cat in FunctionCategory:
@@ -171,7 +171,7 @@ class TestStats:
     @pytest.mark.asyncio
     async def test_stats_tracking(self, registry):
         stats = registry.get_stats()
-        assert stats["registered"] == 142
+        assert stats["registered"] == 152
         assert stats["executions"] == 0
 
         await registry.execute("1.1", {})
