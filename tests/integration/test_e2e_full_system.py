@@ -784,8 +784,8 @@ class TestFunctionRegistry:
         from kernel.fn import FunctionRegistry, register_all_categories
         reg = FunctionRegistry()
         count = register_all_categories(reg)
-        assert count == 120
-        assert len(reg.list_functions()) == 120
+        assert count == 130
+        assert len(reg.list_functions()) == 130
 
     def test_by_category(self):
         from kernel.fn import FunctionRegistry, register_all_categories, FunctionCategory
@@ -834,7 +834,7 @@ class TestFunctionRegistry:
         reg = FunctionRegistry()
         register_all_categories(reg)
         stats = reg.get_stats()
-        assert stats["registered"] == 120
+        assert stats["registered"] == 130
 
     @pytest.mark.asyncio
     async def test_execute_pipeline(self):

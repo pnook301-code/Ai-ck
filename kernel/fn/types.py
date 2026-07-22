@@ -18,6 +18,7 @@ class FunctionCategory(Enum):
     ADVANCED_LOGIC = "advanced_logic"
     SHADOW_BRIDGE = "shadow_bridge"
     CLOUD = "cloud"
+    ENTERPRISE = "enterprise"
 
 
 class FunctionStatus(Enum):
