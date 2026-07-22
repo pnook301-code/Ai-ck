@@ -17,6 +17,7 @@ class FunctionCategory(Enum):
     TERMUX_MOBILE = "termux_mobile"
     ADVANCED_LOGIC = "advanced_logic"
     SHADOW_BRIDGE = "shadow_bridge"
+    CLOUD = "cloud"
 
 
 class FunctionStatus(Enum):
