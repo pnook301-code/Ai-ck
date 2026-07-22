@@ -1,0 +1,2539 @@
+{
+  "entities": {
+    "kg_354b4673b1fb": {
+      "id": "kg_354b4673b1fb",
+      "name": "Claude Opus 4.8",
+      "description": "Anthropic's flagship \u2014 Arena #1 (1502 Elo), Qualiteg 0.8523, Opus 4.6 base + Anthropic 600B reasoning. $15/$75 per M tokens",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 1000000,
+        "price_in": 15.0,
+        "price_out": 75.0,
+        "benchmark_arena_elo": 1502,
+        "benchmark_qualiteg": 0.8523,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6777756,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_90d5f12aea1c": {
+      "id": "kg_90d5f12aea1c",
+      "name": "GPT-5.5 Sol",
+      "description": "OpenAI flagship. Intel Index 58.9, 43B tokens/day, 1M context window, native tool calling",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 1000000,
+        "price_in": 2.5,
+        "price_out": 10.0,
+        "benchmark_intel_index": 58.9,
+        "tokens_per_day_billions": 43,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.677917,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_be2514b64564": {
+      "id": "kg_be2514b64564",
+      "name": "GPT-5.6 Sol",
+      "description": "OpenAI successor to GPT-5.5. Intel Index 60.0+, Anthropic 832B. Best for multi-step enterprise",
+      "entity_type": "concept",
+      "properties": {
+        "benchmark_intel_index": 60.0,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6779513,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_0c47fb305575": {
+      "id": "kg_0c47fb305575",
+      "name": "Gemini 3.1 Pro",
+      "description": "Google DeepMind. 2M native context, strong multimodal. $1.25/$10 per M",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 2000000,
+        "price_in": 1.25,
+        "price_out": 10.0,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6779757,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_c5b590194f31": {
+      "id": "kg_c5b590194f31",
+      "name": "Gemini 3.0 Flash",
+      "description": "Google DeepMind. Sub-second latency, multimodal. $0.075/$0.30 per M",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 1000000,
+        "price_in": 0.075,
+        "price_out": 0.3,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6780076,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_c567d02250dc": {
+      "id": "kg_c567d02250dc",
+      "name": "DeepSeek V4-Pro",
+      "description": "DeepSeek (China). Open weight, MIT license, 685B MoE. Cheapest frontier. $0.27/$1.10 per M",
+      "entity_type": "concept",
+      "properties": {
+        "price_in": 0.27,
+        "price_out": 1.1,
+        "context_window": 131072,
+        "license": "MIT",
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6780307,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_4b62cdff68da": {
+      "id": "kg_4b62cdff68da",
+      "name": "DeepSeek V3.1",
+      "description": "DeepSeek production model. $0.14/$0.28 per M \u2014 10x cheaper than GPT-5.5",
+      "entity_type": "concept",
+      "properties": {
+        "price_in": 0.14,
+        "price_out": 0.28,
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6780503,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_e437dd6eb88a": {
+      "id": "kg_e437dd6eb88a",
+      "name": "Qwen3.5-397B-A17B",
+      "description": "Alibaba. 397B total/17B active MoE, 131K context. Best open-source by Q4 2026",
+      "entity_type": "concept",
+      "properties": {
+        "params_total": 397,
+        "params_active": 17,
+        "context_window": 131072,
+        "license": "Apache-2.0",
+        "model_type": "open_source"
+      },
+      "timestamp": 1784671239.6780694,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_6dee2fb5d538": {
+      "id": "kg_6dee2fb5d538",
+      "name": "Qwen3-Max",
+      "description": "Alibaba flagship. 36% cheaper, 29% faster than Qwen2.5-Max",
+      "entity_type": "concept",
+      "properties": {
+        "price_in": 0.7,
+        "price_out": 2.0,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6780863,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_eff295310ed6": {
+      "id": "kg_eff295310ed6",
+      "name": "GLM-5.2",
+      "description": "Zhipu AI (China). Open weight, 115K input/16K output. $1.40/$3.90 per M",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 115000,
+        "price_in": 1.4,
+        "price_out": 3.9,
+        "license": "open",
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6781042,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_164b8b50e1aa": {
+      "id": "kg_164b8b50e1aa",
+      "name": "Kimi K2.7",
+      "description": "Moonshot AI (China). MoE, 1T total/32B active, 256K context. Agentic/coding lead",
+      "entity_type": "concept",
+      "properties": {
+        "params_total": 1000,
+        "params_active": 32,
+        "context_window": 256000,
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6781209,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_cfc75362d4f9": {
+      "id": "kg_cfc75362d4f9",
+      "name": "MiniMax M2.7",
+      "description": "MiniMax (China). 230B MoE, 10B active, 200K context. Enterprise-grade",
+      "entity_type": "concept",
+      "properties": {
+        "params_total": 230,
+        "params_active": 10,
+        "context_window": 200000,
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6781464,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_fab2be32cf34": {
+      "id": "kg_fab2be32cf34",
+      "name": "Hunyuan Large",
+      "description": "Tencent. 389B MoE, 56B active. MoE architecture, multimodal",
+      "entity_type": "concept",
+      "properties": {
+        "params_total": 389,
+        "params_active": 56,
+        "model_type": "open_weight"
+      },
+      "timestamp": 1784671239.6781647,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_ad5640244d28": {
+      "id": "kg_ad5640244d28",
+      "name": "Doubao 1.8 Pro",
+      "description": "ByteDance (China). Strongest domestic model in some benchmarks, multimodal",
+      "entity_type": "concept",
+      "properties": {
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6781814,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_f0f8a5183198": {
+      "id": "kg_f0f8a5183198",
+      "name": "Yuanbao 2.0",
+      "description": "Tencent. SWE-Bench Verified 70.2%, SWE-Bench Multilingual 65.5% \u2014 both world records",
+      "entity_type": "concept",
+      "properties": {
+        "benchmark_swe_bench_verified": 70.2,
+        "benchmark_swe_bench_ml": 65.5,
+        "model_type": "commercial"
+      },
+      "timestamp": 1784671239.6781976,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_6bc9a6a18651": {
+      "id": "kg_6bc9a6a18651",
+      "name": "Samsung Gauss 3",
+      "description": "Samsung. On-device AI for phones, tablets, wearables. Language + Code + Vision",
+      "entity_type": "concept",
+      "properties": {
+        "model_type": "commercial",
+        "region": "korea"
+      },
+      "timestamp": 1784671239.6782138,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_c70984ec5820": {
+      "id": "kg_c70984ec5820",
+      "name": "Naver HyperCLOVA X",
+      "description": "Naver. Korean-optimized AI, #1 in Korea, 200B+ parameters",
+      "entity_type": "concept",
+      "properties": {
+        "model_type": "commercial",
+        "region": "korea"
+      },
+      "timestamp": 1784671239.678229,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_c497a11d7c96": {
+      "id": "kg_c497a11d7c96",
+      "name": "Kakao Moana 4",
+      "description": "Kakao. Korean LLM optimized for local services",
+      "entity_type": "concept",
+      "properties": {
+        "model_type": "commercial",
+        "region": "korea"
+      },
+      "timestamp": 1784671239.678244,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_abb08af688d4": {
+      "id": "kg_abb08af688d4",
+      "name": "LG EXAONE 4.0",
+      "description": "LG AI Research. B2B AI platform for manufacturing/robotics/bio",
+      "entity_type": "concept",
+      "properties": {
+        "model_type": "commercial",
+        "region": "korea"
+      },
+      "timestamp": 1784671239.6782641,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_0631fe0ce681": {
+      "id": "kg_0631fe0ce681",
+      "name": "Xiaomi MiMo V2",
+      "description": "Xiaomi. Open weight, 7B params. Strong math/code for size",
+      "entity_type": "concept",
+      "properties": {
+        "params_total": 7,
+        "license": "MIT",
+        "model_type": "open_weight",
+        "region": "china"
+      },
+      "timestamp": 1784671239.678285,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_90b32c65a80c": {
+      "id": "kg_90b32c65a80c",
+      "name": "Z.ai GLM-5.5",
+      "description": "Zhipu AI. 115K context, strong reasoning, agentic",
+      "entity_type": "concept",
+      "properties": {
+        "context_window": 115000,
+        "model_type": "commercial",
+        "region": "china"
+      },
+      "timestamp": 1784671239.6783009,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_3c80c5875a66": {
+      "id": "kg_3c80c5875a66",
+      "name": "LangChain",
+      "description": "Cross-ecosystem agent framework. 82.5% contributor overlap. Most popular",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 100000,
+        "ecosystem": "cross",
+        "weekly_downloads": 800000
+      },
+      "timestamp": 1784671239.6783211,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_140360910cfb": {
+      "id": "kg_140360910cfb",
+      "name": "LangGraph",
+      "description": "LangChain team. Stateful multi-actor apps. Lowest contributor churn (0.39%)",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 85000,
+        "ecosystem": "cross"
+      },
+      "timestamp": 1784671239.6783447,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_5858423a15a2": {
+      "id": "kg_5858423a15a2",
+      "name": "CrewAI",
+      "description": "Multi-agent orchestration. Highest 90-day growth in Python ecosystem",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 60000,
+        "ecosystem": "python"
+      },
+      "timestamp": 1784671239.678365,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_2bb5169a658d": {
+      "id": "kg_2bb5169a658d",
+      "name": "AutoGen",
+      "description": "Microsoft. Cross-ecosystem (Python+C#/.NET). Highest raw stars in cross-ecosystem",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 80000,
+        "ecosystem": "cross"
+      },
+      "timestamp": 1784671239.6783812,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_b31da9babaaa": {
+      "id": "kg_b31da9babaaa",
+      "name": "SmolAgents",
+      "description": "HuggingFace. 55.5% contributor overlap with CrewAI. 31.1% with LangChain",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 15000,
+        "ecosystem": "python"
+      },
+      "timestamp": 1784671239.678397,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_8be2a032c1f9": {
+      "id": "kg_8be2a032c1f9",
+      "name": "Mastra",
+      "description": "TypeScript-first. Highest contributor retention 62.5%. 40%+ growth",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 12000,
+        "ecosystem": "typescript"
+      },
+      "timestamp": 1784671239.6784134,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_4ef8881faeff": {
+      "id": "kg_4ef8881faeff",
+      "name": "Vercel AI SDK",
+      "description": "Top TypeScript framework. 113K weekly downloads",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 30000,
+        "ecosystem": "typescript",
+        "weekly_downloads": 113000
+      },
+      "timestamp": 1784671239.6784291,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_dca2f931c4b9": {
+      "id": "kg_dca2f931c4b9",
+      "name": "AutoGPT",
+      "description": "Highest stars but LOWEST contributor density. Star-to-contributor ratio 146:1",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 200000,
+        "ecosystem": "python",
+        "contributor_density_low": true
+      },
+      "timestamp": 1784671239.6784456,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_3a86fc4eaed3": {
+      "id": "kg_3a86fc4eaed3",
+      "name": "Pydantic-AI",
+      "description": "Deepest adoption per star. 18.2% contributor overlap with Mastra",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 8000,
+        "ecosystem": "python"
+      },
+      "timestamp": 1784671239.6784616,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_0df8cd95bb6e": {
+      "id": "kg_0df8cd95bb6e",
+      "name": "Google ADK",
+      "description": "Google official. New, 6.2K stars. Python-first, MCP native",
+      "entity_type": "code",
+      "properties": {
+        "github_stars": 6200,
+        "ecosystem": "python"
+      },
+      "timestamp": 1784671239.6784766,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_1a058f0d3341": {
+      "id": "kg_1a058f0d3341",
+      "name": "Anthropic",
+      "description": "AI safety company, maker of Claude series",
+      "entity_type": "organization",
+      "properties": {
+        "valuation": "60B",
+        "headquarters": "San Francisco"
+      },
+      "timestamp": 1784671239.6784933,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_38b3a9e9b840": {
+      "id": "kg_38b3a9e9b840",
+      "name": "OpenAI",
+      "description": "AI lab, maker of GPT series",
+      "entity_type": "organization",
+      "properties": {
+        "valuation": "300B+",
+        "headquarters": "San Francisco"
+      },
+      "timestamp": 1784671239.6785097,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_7d3d17e80a9b": {
+      "id": "kg_7d3d17e80a9b",
+      "name": "Google DeepMind",
+      "description": "AI research lab, Gemini series",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "London/Mountain View"
+      },
+      "timestamp": 1784671239.678525,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_2c6a8b5a74bb": {
+      "id": "kg_2c6a8b5a74bb",
+      "name": "DeepSeek",
+      "description": "Chinese AI lab, open weight models",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Hangzhou"
+      },
+      "timestamp": 1784671239.67854,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_95c43899d510": {
+      "id": "kg_95c43899d510",
+      "name": "Alibaba Cloud",
+      "description": "Qwen series, largest open-source contributor",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Hangzhou"
+      },
+      "timestamp": 1784671239.678554,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_2d3f9362df60": {
+      "id": "kg_2d3f9362df60",
+      "name": "Zhipu AI",
+      "description": "GLM series, Tsinghua spinoff",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Beijing"
+      },
+      "timestamp": 1784671239.6785696,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_f082b131c449": {
+      "id": "kg_f082b131c449",
+      "name": "Moonshot AI",
+      "description": "Kimi series, agentic focus",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Beijing"
+      },
+      "timestamp": 1784671239.678584,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_fdfd28b6bc59": {
+      "id": "kg_fdfd28b6bc59",
+      "name": "Samsung",
+      "description": "Korean tech giant, Gauss AI",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Suwon"
+      },
+      "timestamp": 1784671239.6786034,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_098c512851f3": {
+      "id": "kg_098c512851f3",
+      "name": "Naver",
+      "description": "Korean internet giant, HyperCLOVA",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Seongnam"
+      },
+      "timestamp": 1784671239.6786194,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_52028be420b8": {
+      "id": "kg_52028be420b8",
+      "name": "ByteDance",
+      "description": "Chinese tech giant, Doubao AI",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Beijing"
+      },
+      "timestamp": 1784671239.6786344,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_762bef23cf6f": {
+      "id": "kg_762bef23cf6f",
+      "name": "Microsoft",
+      "description": "AutoGen, Azure AI, GitHub Copilot",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Redmond"
+      },
+      "timestamp": 1784671239.6786501,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_9acf06468621": {
+      "id": "kg_9acf06468621",
+      "name": "Meta",
+      "description": "Llama series, open source AI",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Menlo Park"
+      },
+      "timestamp": 1784671239.678665,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_a415d6d2874e": {
+      "id": "kg_a415d6d2874e",
+      "name": "Baidu",
+      "description": "ERNIE series, China's search giant",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Beijing"
+      },
+      "timestamp": 1784671239.6786892,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_024a49e73ace": {
+      "id": "kg_024a49e73ace",
+      "name": "Tencent",
+      "description": "Hunyuan, Yuanbao",
+      "entity_type": "organization",
+      "properties": {
+        "headquarters": "Shenzhen"
+      },
+      "timestamp": 1784671239.6787055,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_77d27407bdab": {
+      "id": "kg_77d27407bdab",
+      "name": "Attention Is All You Need",
+      "description": "Vaswani et al. 2017. Transformer architecture. Foundation of all modern LLMs",
+      "entity_type": "document",
+      "properties": {
+        "author": "Vaswani et al.",
+        "year": 2017,
+        "citations": 120000
+      },
+      "timestamp": 1784671239.6787255,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_077e0470a580": {
+      "id": "kg_077e0470a580",
+      "name": "Constitutional AI",
+      "description": "Anthropic 2022. RLHF without human labels. Foundation of Claude safety",
+      "entity_type": "document",
+      "properties": {
+        "author": "Anthropic",
+        "year": 2022
+      },
+      "timestamp": 1784671239.6787436,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_8bb8e4847f10": {
+      "id": "kg_8bb8e4847f10",
+      "name": "Scaling Laws for Neural Language Models",
+      "description": "Kaplan et al. 2020. Compute-optimal training. Chinchilla scaling",
+      "entity_type": "document",
+      "properties": {
+        "author": "OpenAI",
+        "year": 2020
+      },
+      "timestamp": 1784671239.6787596,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_f8ebf15382de": {
+      "id": "kg_f8ebf15382de",
+      "name": "Mixture of Experts",
+      "description": "Shazeer et al. 2017. Sparse MoE \u2014 basis for DeepSeek V4, Qwen3.5, Kimi K2",
+      "entity_type": "document",
+      "properties": {
+        "author": "Google",
+        "year": 2017
+      },
+      "timestamp": 1784671239.6787753,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_b925946dd4aa": {
+      "id": "kg_b925946dd4aa",
+      "name": "Chain-of-Thought Prompting",
+      "description": "Wei et al. 2022. Step-by-step reasoning. Foundation of reasoning models",
+      "entity_type": "document",
+      "properties": {
+        "author": "Google Brain",
+        "year": 2022
+      },
+      "timestamp": 1784671239.6787908,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_3df4c2dfbb60": {
+      "id": "kg_3df4c2dfbb60",
+      "name": "Tree of Thought",
+      "description": "Yao et al. 2023. Structured reasoning paths",
+      "entity_type": "document",
+      "properties": {
+        "author": "Princeton",
+        "year": 2023
+      },
+      "timestamp": 1784671239.6788108,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_4bc7861c8425": {
+      "id": "kg_4bc7861c8425",
+      "name": "ReAct",
+      "description": "Yao et al. 2022. Reasoning + Acting. Foundation of agentic AI",
+      "entity_type": "document",
+      "properties": {
+        "author": "Princeton/Google",
+        "year": 2022
+      },
+      "timestamp": 1784671239.678826,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_ffd5b118dd88": {
+      "id": "kg_ffd5b118dd88",
+      "name": "MCP Protocol",
+      "description": "Anthropic 2024. Model Context Protocol \u2014 universal tool interface standard",
+      "entity_type": "document",
+      "properties": {
+        "author": "Anthropic",
+        "year": 2024
+      },
+      "timestamp": 1784671239.6788418,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_9d03cb09ce0b": {
+      "id": "kg_9d03cb09ce0b",
+      "name": "Smolagents: Efficient Code-Acting Agents",
+      "description": "HuggingFace 2025. Code-first agent framework",
+      "entity_type": "document",
+      "properties": {
+        "author": "HuggingFace",
+        "year": 2025
+      },
+      "timestamp": 1784671239.6788568,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_5f5c8618e2df": {
+      "id": "kg_5f5c8618e2df",
+      "name": "Chatbot Arena",
+      "description": "LMSYS human preference ELO rankings",
+      "entity_type": "concept",
+      "properties": {
+        "url": "lmarena.ai"
+      },
+      "timestamp": 1784671239.678872,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_6f79297de0f4": {
+      "id": "kg_6f79297de0f4",
+      "name": "SWE-Bench Verified",
+      "description": "Real-world software engineering benchmark",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6788895,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_140e9f4e8f26": {
+      "id": "kg_140e9f4e8f26",
+      "name": "SWE-Bench Multilingual",
+      "description": "Multi-language software engineering",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6789043,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_83568f35478d": {
+      "id": "kg_83568f35478d",
+      "name": "MMLU-Pro",
+      "description": "Massive Multitask Language Understanding Pro",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6789224,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_312879c61bf7": {
+      "id": "kg_312879c61bf7",
+      "name": "HumanEval",
+      "description": "Code generation benchmark",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6789374,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_9454e62ea3e7": {
+      "id": "kg_9454e62ea3e7",
+      "name": "GPQA Diamond",
+      "description": "Graduate-level science reasoning",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6789517,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_de3f8dab26b5": {
+      "id": "kg_de3f8dab26b5",
+      "name": "Qualiteg",
+      "description": "Quality-weighted benchmark composite",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6789658,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_a1c8f69007e4": {
+      "id": "kg_a1c8f69007e4",
+      "name": "CK-NEXUS AIOS",
+      "description": "Enterprise AI Operating System \u2014 110 functions, 6 agents, Knowledge Graph, Shadow Bridge",
+      "entity_type": "agent",
+      "properties": {
+        "version": "enterprise-2026",
+        "role": "AI Operating System"
+      },
+      "timestamp": 1784671239.6789825,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_b7d38ac2fb23": {
+      "id": "kg_b7d38ac2fb23",
+      "name": "Knowledge Graph Engine",
+      "description": "Typed entity/relation store with BFS traversal, transitive inference, JSON persistence",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.memory.knowledge_graph"
+      },
+      "timestamp": 1784671239.6789985,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_9921ebe8888b": {
+      "id": "kg_9921ebe8888b",
+      "name": "ICE Engine",
+      "description": "IterativeConsensusEngine: Architect\u2192Critic\u2192Judge feedback loop",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.ice.engine"
+      },
+      "timestamp": 1784671239.679018,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_5a2e841d7470": {
+      "id": "kg_5a2e841d7470",
+      "name": "Function Registry 110",
+      "description": "110 async functions across 11 categories with pipeline orchestrator",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.fn",
+        "function_count": 110
+      },
+      "timestamp": 1784671239.6790333,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_d9953ac36ad1": {
+      "id": "kg_d9953ac36ad1",
+      "name": "6 Specialist Agents",
+      "description": "Coder, Tester, DevOps, Researcher, Security, Reviewer agents",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.agents.specialists"
+      },
+      "timestamp": 1784671239.6790476,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_679d208c42d0": {
+      "id": "kg_679d208c42d0",
+      "name": "Video Analyzer",
+      "description": "Scene detection, frame extraction, audio transcription, LLM querying",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.video"
+      },
+      "timestamp": 1784671239.6790621,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_68bb1bd5fe4a": {
+      "id": "kg_68bb1bd5fe4a",
+      "name": "Shadow Bridge",
+      "description": "Legit\u2194Shadow bridge for auto-registration, CAPTCHA, browser automation",
+      "entity_type": "code",
+      "properties": {
+        "module": "kernel.bridge.shadow_bridge"
+      },
+      "timestamp": 1784671239.679076,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_04358fb4d32c": {
+      "id": "kg_04358fb4d32c",
+      "name": "United States",
+      "description": "Leading in frontier AI models",
+      "entity_type": "location",
+      "properties": {
+        "ai_investment_billions": 200,
+        "region": "north_america"
+      },
+      "timestamp": 1784671239.679097,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_b5698b6efbd4": {
+      "id": "kg_b5698b6efbd4",
+      "name": "China",
+      "description": "2nd in AI, fastest growing. 7.94T tokens/week, 2.11x US",
+      "entity_type": "location",
+      "properties": {
+        "ai_market_cny_billion": 495.4,
+        "region": "asia"
+      },
+      "timestamp": 1784671239.6791134,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_c4c3c97d2db7": {
+      "id": "kg_c4c3c97d2db7",
+      "name": "South Korea",
+      "description": "3rd globally, targeting 2nd by Aug 2026",
+      "entity_type": "location",
+      "properties": {
+        "region": "asia"
+      },
+      "timestamp": 1784671239.6791282,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_5865acdbcd25": {
+      "id": "kg_5865acdbcd25",
+      "name": "Japan",
+      "description": "GPT-5 dominance, 93% GPT usage among developers",
+      "entity_type": "location",
+      "properties": {
+        "region": "asia"
+      },
+      "timestamp": 1784671239.6791425,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_96297cb37a90": {
+      "id": "kg_96297cb37a90",
+      "name": "Thailand",
+      "description": "Government-backed AI sovereignty",
+      "entity_type": "location",
+      "properties": {
+        "region": "asia"
+      },
+      "timestamp": 1784671239.6791565,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_123a268aa7a1": {
+      "id": "kg_123a268aa7a1",
+      "name": "UAE",
+      "description": "Falcon series, state-funded AI investment",
+      "entity_type": "location",
+      "properties": {
+        "region": "middle_east"
+      },
+      "timestamp": 1784671239.6791716,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_0160043fe4b8": {
+      "id": "kg_0160043fe4b8",
+      "name": "Open Source AI Framework",
+      "description": "Community-driven, free AI agent frameworks. Key metrics: stars, contributor density, growth",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.679186,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    },
+    "kg_a4a557aec3e3": {
+      "id": "kg_a4a557aec3e3",
+      "name": "Closed Source AI Model",
+      "description": "Proprietary AI models accessed via API. Key metrics: Arena ELO, price, context window",
+      "entity_type": "concept",
+      "properties": {},
+      "timestamp": 1784671239.6792002,
+      "confidence": 0.95,
+      "source": "global_ai_research_2026",
+      "aliases": []
+    }
+  },
+  "relations": {
+    "kg_354b4673b1fb": [
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_1a058f0d3341",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679223
+      },
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_5f5c8618e2df",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794817
+      },
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_077e0470a580",
+        "relation_type": "derived_from",
+        "weight": 0.85,
+        "properties": {},
+        "timestamp": 1784671239.679501
+      },
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_77d27407bdab",
+        "relation_type": "derived_from",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6795053
+      }
+    ],
+    "kg_1a058f0d3341": [
+      {
+        "source_id": "kg_1a058f0d3341",
+        "target_id": "kg_354b4673b1fb",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792421
+      },
+      {
+        "source_id": "kg_1a058f0d3341",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794121
+      }
+    ],
+    "kg_90d5f12aea1c": [
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_38b3a9e9b840",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792526
+      },
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_8bb8e4847f10",
+        "relation_type": "derived_from",
+        "weight": 0.85,
+        "properties": {},
+        "timestamp": 1784671239.679533
+      },
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_b925946dd4aa",
+        "relation_type": "derived_from",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679537
+      }
+    ],
+    "kg_38b3a9e9b840": [
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_90d5f12aea1c",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792586
+      },
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_be2514b64564",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792698
+      },
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794174
+      }
+    ],
+    "kg_be2514b64564": [
+      {
+        "source_id": "kg_be2514b64564",
+        "target_id": "kg_38b3a9e9b840",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792645
+      }
+    ],
+    "kg_0c47fb305575": [
+      {
+        "source_id": "kg_0c47fb305575",
+        "target_id": "kg_7d3d17e80a9b",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792748
+      }
+    ],
+    "kg_7d3d17e80a9b": [
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_0c47fb305575",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.67928
+      },
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_c5b590194f31",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792898
+      },
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794217
+      }
+    ],
+    "kg_c5b590194f31": [
+      {
+        "source_id": "kg_c5b590194f31",
+        "target_id": "kg_7d3d17e80a9b",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792853
+      }
+    ],
+    "kg_c567d02250dc": [
+      {
+        "source_id": "kg_c567d02250dc",
+        "target_id": "kg_2c6a8b5a74bb",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792943
+      },
+      {
+        "source_id": "kg_c567d02250dc",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679519
+      }
+    ],
+    "kg_2c6a8b5a74bb": [
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_c567d02250dc",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679299
+      },
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_4b62cdff68da",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793094
+      },
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794348
+      }
+    ],
+    "kg_4b62cdff68da": [
+      {
+        "source_id": "kg_4b62cdff68da",
+        "target_id": "kg_2c6a8b5a74bb",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793041
+      }
+    ],
+    "kg_e437dd6eb88a": [
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_95c43899d510",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679315
+      },
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_83568f35478d",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679495
+      },
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679524
+      }
+    ],
+    "kg_95c43899d510": [
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_e437dd6eb88a",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793196
+      },
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_6dee2fb5d538",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793282
+      },
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794388
+      }
+    ],
+    "kg_6dee2fb5d538": [
+      {
+        "source_id": "kg_6dee2fb5d538",
+        "target_id": "kg_95c43899d510",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793242
+      }
+    ],
+    "kg_eff295310ed6": [
+      {
+        "source_id": "kg_eff295310ed6",
+        "target_id": "kg_2d3f9362df60",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793332
+      }
+    ],
+    "kg_2d3f9362df60": [
+      {
+        "source_id": "kg_2d3f9362df60",
+        "target_id": "kg_eff295310ed6",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793373
+      },
+      {
+        "source_id": "kg_2d3f9362df60",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794431
+      }
+    ],
+    "kg_164b8b50e1aa": [
+      {
+        "source_id": "kg_164b8b50e1aa",
+        "target_id": "kg_f082b131c449",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793444
+      },
+      {
+        "source_id": "kg_164b8b50e1aa",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6795287
+      }
+    ],
+    "kg_f082b131c449": [
+      {
+        "source_id": "kg_f082b131c449",
+        "target_id": "kg_164b8b50e1aa",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679349
+      },
+      {
+        "source_id": "kg_f082b131c449",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794477
+      }
+    ],
+    "kg_ad5640244d28": [
+      {
+        "source_id": "kg_ad5640244d28",
+        "target_id": "kg_52028be420b8",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679354
+      }
+    ],
+    "kg_52028be420b8": [
+      {
+        "source_id": "kg_52028be420b8",
+        "target_id": "kg_ad5640244d28",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793582
+      },
+      {
+        "source_id": "kg_52028be420b8",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794565
+      }
+    ],
+    "kg_fab2be32cf34": [
+      {
+        "source_id": "kg_fab2be32cf34",
+        "target_id": "kg_024a49e73ace",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679363
+      }
+    ],
+    "kg_024a49e73ace": [
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_fab2be32cf34",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793678
+      },
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_f0f8a5183198",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793828
+      },
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794665
+      }
+    ],
+    "kg_f0f8a5183198": [
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_024a49e73ace",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793737
+      },
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_6f79297de0f4",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794863
+      },
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_140e9f4e8f26",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794908
+      }
+    ],
+    "kg_6bc9a6a18651": [
+      {
+        "source_id": "kg_6bc9a6a18651",
+        "target_id": "kg_fdfd28b6bc59",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793876
+      }
+    ],
+    "kg_fdfd28b6bc59": [
+      {
+        "source_id": "kg_fdfd28b6bc59",
+        "target_id": "kg_6bc9a6a18651",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793923
+      },
+      {
+        "source_id": "kg_fdfd28b6bc59",
+        "target_id": "kg_c4c3c97d2db7",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794708
+      }
+    ],
+    "kg_c70984ec5820": [
+      {
+        "source_id": "kg_c70984ec5820",
+        "target_id": "kg_098c512851f3",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793966
+      }
+    ],
+    "kg_098c512851f3": [
+      {
+        "source_id": "kg_098c512851f3",
+        "target_id": "kg_c70984ec5820",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794043
+      },
+      {
+        "source_id": "kg_098c512851f3",
+        "target_id": "kg_c4c3c97d2db7",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794755
+      }
+    ],
+    "kg_762bef23cf6f": [
+      {
+        "source_id": "kg_762bef23cf6f",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794257
+      }
+    ],
+    "kg_9acf06468621": [
+      {
+        "source_id": "kg_9acf06468621",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794302
+      }
+    ],
+    "kg_a415d6d2874e": [
+      {
+        "source_id": "kg_a415d6d2874e",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794615
+      }
+    ],
+    "kg_a1c8f69007e4": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_b7d38ac2fb23",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679544
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_9921ebe8888b",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679549
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_5a2e841d7470",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795533
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_d9953ac36ad1",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795576
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_679d208c42d0",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679564
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_68bb1bd5fe4a",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795685
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_b7d38ac2fb23",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679573
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_9921ebe8888b",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679577
+      }
+    ],
+    "kg_5858423a15a2": [
+      {
+        "source_id": "kg_5858423a15a2",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6795816
+      },
+      {
+        "source_id": "kg_5858423a15a2",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796196
+      }
+    ],
+    "kg_b31da9babaaa": [
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_5858423a15a2",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6795864
+      },
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.6,
+        "properties": {},
+        "timestamp": 1784671239.679591
+      },
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796238
+      }
+    ],
+    "kg_3a86fc4eaed3": [
+      {
+        "source_id": "kg_3a86fc4eaed3",
+        "target_id": "kg_8be2a032c1f9",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6795955
+      },
+      {
+        "source_id": "kg_3a86fc4eaed3",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796353
+      }
+    ],
+    "kg_0df8cd95bb6e": [
+      {
+        "source_id": "kg_0df8cd95bb6e",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.6,
+        "properties": {},
+        "timestamp": 1784671239.6795995
+      },
+      {
+        "source_id": "kg_0df8cd95bb6e",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679648
+      }
+    ],
+    "kg_140360910cfb": [
+      {
+        "source_id": "kg_140360910cfb",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679604
+      }
+    ],
+    "kg_2bb5169a658d": [
+      {
+        "source_id": "kg_2bb5169a658d",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6796086
+      },
+      {
+        "source_id": "kg_2bb5169a658d",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796281
+      }
+    ],
+    "kg_3c80c5875a66": [
+      {
+        "source_id": "kg_3c80c5875a66",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796148
+      }
+    ],
+    "kg_dca2f931c4b9": [
+      {
+        "source_id": "kg_dca2f931c4b9",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796436
+      }
+    ],
+    "kg_4ef8881faeff": [
+      {
+        "source_id": "kg_4ef8881faeff",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679653
+      }
+    ],
+    "kg_8be2a032c1f9": [
+      {
+        "source_id": "kg_8be2a032c1f9",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796572
+      }
+    ]
+  },
+  "incoming": {
+    "kg_1a058f0d3341": [
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_1a058f0d3341",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679223
+      }
+    ],
+    "kg_354b4673b1fb": [
+      {
+        "source_id": "kg_1a058f0d3341",
+        "target_id": "kg_354b4673b1fb",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792421
+      }
+    ],
+    "kg_38b3a9e9b840": [
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_38b3a9e9b840",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792526
+      },
+      {
+        "source_id": "kg_be2514b64564",
+        "target_id": "kg_38b3a9e9b840",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792645
+      }
+    ],
+    "kg_90d5f12aea1c": [
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_90d5f12aea1c",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792586
+      }
+    ],
+    "kg_be2514b64564": [
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_be2514b64564",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792698
+      }
+    ],
+    "kg_7d3d17e80a9b": [
+      {
+        "source_id": "kg_0c47fb305575",
+        "target_id": "kg_7d3d17e80a9b",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792748
+      },
+      {
+        "source_id": "kg_c5b590194f31",
+        "target_id": "kg_7d3d17e80a9b",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792853
+      }
+    ],
+    "kg_0c47fb305575": [
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_0c47fb305575",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.67928
+      }
+    ],
+    "kg_c5b590194f31": [
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_c5b590194f31",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792898
+      }
+    ],
+    "kg_2c6a8b5a74bb": [
+      {
+        "source_id": "kg_c567d02250dc",
+        "target_id": "kg_2c6a8b5a74bb",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6792943
+      },
+      {
+        "source_id": "kg_4b62cdff68da",
+        "target_id": "kg_2c6a8b5a74bb",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793041
+      }
+    ],
+    "kg_c567d02250dc": [
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_c567d02250dc",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679299
+      }
+    ],
+    "kg_4b62cdff68da": [
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_4b62cdff68da",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793094
+      }
+    ],
+    "kg_95c43899d510": [
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_95c43899d510",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679315
+      },
+      {
+        "source_id": "kg_6dee2fb5d538",
+        "target_id": "kg_95c43899d510",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793242
+      }
+    ],
+    "kg_e437dd6eb88a": [
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_e437dd6eb88a",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793196
+      }
+    ],
+    "kg_6dee2fb5d538": [
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_6dee2fb5d538",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793282
+      }
+    ],
+    "kg_2d3f9362df60": [
+      {
+        "source_id": "kg_eff295310ed6",
+        "target_id": "kg_2d3f9362df60",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793332
+      }
+    ],
+    "kg_eff295310ed6": [
+      {
+        "source_id": "kg_2d3f9362df60",
+        "target_id": "kg_eff295310ed6",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793373
+      }
+    ],
+    "kg_f082b131c449": [
+      {
+        "source_id": "kg_164b8b50e1aa",
+        "target_id": "kg_f082b131c449",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793444
+      }
+    ],
+    "kg_164b8b50e1aa": [
+      {
+        "source_id": "kg_f082b131c449",
+        "target_id": "kg_164b8b50e1aa",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679349
+      }
+    ],
+    "kg_52028be420b8": [
+      {
+        "source_id": "kg_ad5640244d28",
+        "target_id": "kg_52028be420b8",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679354
+      }
+    ],
+    "kg_ad5640244d28": [
+      {
+        "source_id": "kg_52028be420b8",
+        "target_id": "kg_ad5640244d28",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793582
+      }
+    ],
+    "kg_024a49e73ace": [
+      {
+        "source_id": "kg_fab2be32cf34",
+        "target_id": "kg_024a49e73ace",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679363
+      },
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_024a49e73ace",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793737
+      }
+    ],
+    "kg_fab2be32cf34": [
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_fab2be32cf34",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793678
+      }
+    ],
+    "kg_f0f8a5183198": [
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_f0f8a5183198",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793828
+      }
+    ],
+    "kg_fdfd28b6bc59": [
+      {
+        "source_id": "kg_6bc9a6a18651",
+        "target_id": "kg_fdfd28b6bc59",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793876
+      }
+    ],
+    "kg_6bc9a6a18651": [
+      {
+        "source_id": "kg_fdfd28b6bc59",
+        "target_id": "kg_6bc9a6a18651",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793923
+      }
+    ],
+    "kg_098c512851f3": [
+      {
+        "source_id": "kg_c70984ec5820",
+        "target_id": "kg_098c512851f3",
+        "relation_type": "created_by",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6793966
+      }
+    ],
+    "kg_c70984ec5820": [
+      {
+        "source_id": "kg_098c512851f3",
+        "target_id": "kg_c70984ec5820",
+        "relation_type": "generates",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794043
+      }
+    ],
+    "kg_04358fb4d32c": [
+      {
+        "source_id": "kg_1a058f0d3341",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794121
+      },
+      {
+        "source_id": "kg_38b3a9e9b840",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794174
+      },
+      {
+        "source_id": "kg_7d3d17e80a9b",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794217
+      },
+      {
+        "source_id": "kg_762bef23cf6f",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794257
+      },
+      {
+        "source_id": "kg_9acf06468621",
+        "target_id": "kg_04358fb4d32c",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794302
+      }
+    ],
+    "kg_b5698b6efbd4": [
+      {
+        "source_id": "kg_2c6a8b5a74bb",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794348
+      },
+      {
+        "source_id": "kg_95c43899d510",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794388
+      },
+      {
+        "source_id": "kg_2d3f9362df60",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794431
+      },
+      {
+        "source_id": "kg_f082b131c449",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794477
+      },
+      {
+        "source_id": "kg_52028be420b8",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794565
+      },
+      {
+        "source_id": "kg_a415d6d2874e",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794615
+      },
+      {
+        "source_id": "kg_024a49e73ace",
+        "target_id": "kg_b5698b6efbd4",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794665
+      }
+    ],
+    "kg_c4c3c97d2db7": [
+      {
+        "source_id": "kg_fdfd28b6bc59",
+        "target_id": "kg_c4c3c97d2db7",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794708
+      },
+      {
+        "source_id": "kg_098c512851f3",
+        "target_id": "kg_c4c3c97d2db7",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6794755
+      }
+    ],
+    "kg_5f5c8618e2df": [
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_5f5c8618e2df",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794817
+      }
+    ],
+    "kg_6f79297de0f4": [
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_6f79297de0f4",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794863
+      }
+    ],
+    "kg_140e9f4e8f26": [
+      {
+        "source_id": "kg_f0f8a5183198",
+        "target_id": "kg_140e9f4e8f26",
+        "relation_type": "uses",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6794908
+      }
+    ],
+    "kg_83568f35478d": [
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_83568f35478d",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679495
+      }
+    ],
+    "kg_077e0470a580": [
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_077e0470a580",
+        "relation_type": "derived_from",
+        "weight": 0.85,
+        "properties": {},
+        "timestamp": 1784671239.679501
+      }
+    ],
+    "kg_77d27407bdab": [
+      {
+        "source_id": "kg_354b4673b1fb",
+        "target_id": "kg_77d27407bdab",
+        "relation_type": "derived_from",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6795053
+      }
+    ],
+    "kg_f8ebf15382de": [
+      {
+        "source_id": "kg_c567d02250dc",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679519
+      },
+      {
+        "source_id": "kg_e437dd6eb88a",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679524
+      },
+      {
+        "source_id": "kg_164b8b50e1aa",
+        "target_id": "kg_f8ebf15382de",
+        "relation_type": "derived_from",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.6795287
+      }
+    ],
+    "kg_8bb8e4847f10": [
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_8bb8e4847f10",
+        "relation_type": "derived_from",
+        "weight": 0.85,
+        "properties": {},
+        "timestamp": 1784671239.679533
+      }
+    ],
+    "kg_b925946dd4aa": [
+      {
+        "source_id": "kg_90d5f12aea1c",
+        "target_id": "kg_b925946dd4aa",
+        "relation_type": "derived_from",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679537
+      }
+    ],
+    "kg_b7d38ac2fb23": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_b7d38ac2fb23",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679544
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_b7d38ac2fb23",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679573
+      }
+    ],
+    "kg_9921ebe8888b": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_9921ebe8888b",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679549
+      },
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_9921ebe8888b",
+        "relation_type": "uses",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679577
+      }
+    ],
+    "kg_5a2e841d7470": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_5a2e841d7470",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795533
+      }
+    ],
+    "kg_d9953ac36ad1": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_d9953ac36ad1",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795576
+      }
+    ],
+    "kg_679d208c42d0": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_679d208c42d0",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.679564
+      }
+    ],
+    "kg_68bb1bd5fe4a": [
+      {
+        "source_id": "kg_a1c8f69007e4",
+        "target_id": "kg_68bb1bd5fe4a",
+        "relation_type": "contains",
+        "weight": 0.95,
+        "properties": {},
+        "timestamp": 1784671239.6795685
+      }
+    ],
+    "kg_3c80c5875a66": [
+      {
+        "source_id": "kg_5858423a15a2",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6795816
+      },
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.6,
+        "properties": {},
+        "timestamp": 1784671239.679591
+      },
+      {
+        "source_id": "kg_0df8cd95bb6e",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.6,
+        "properties": {},
+        "timestamp": 1784671239.6795995
+      },
+      {
+        "source_id": "kg_140360910cfb",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.9,
+        "properties": {},
+        "timestamp": 1784671239.679604
+      },
+      {
+        "source_id": "kg_2bb5169a658d",
+        "target_id": "kg_3c80c5875a66",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6796086
+      }
+    ],
+    "kg_5858423a15a2": [
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_5858423a15a2",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6795864
+      }
+    ],
+    "kg_8be2a032c1f9": [
+      {
+        "source_id": "kg_3a86fc4eaed3",
+        "target_id": "kg_8be2a032c1f9",
+        "relation_type": "related_to",
+        "weight": 0.7,
+        "properties": {},
+        "timestamp": 1784671239.6795955
+      }
+    ],
+    "kg_0160043fe4b8": [
+      {
+        "source_id": "kg_3c80c5875a66",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796148
+      },
+      {
+        "source_id": "kg_5858423a15a2",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796196
+      },
+      {
+        "source_id": "kg_b31da9babaaa",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796238
+      },
+      {
+        "source_id": "kg_2bb5169a658d",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796281
+      },
+      {
+        "source_id": "kg_3a86fc4eaed3",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796353
+      },
+      {
+        "source_id": "kg_dca2f931c4b9",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796436
+      },
+      {
+        "source_id": "kg_0df8cd95bb6e",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679648
+      },
+      {
+        "source_id": "kg_4ef8881faeff",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.679653
+      },
+      {
+        "source_id": "kg_8be2a032c1f9",
+        "target_id": "kg_0160043fe4b8",
+        "relation_type": "part_of",
+        "weight": 0.8,
+        "properties": {},
+        "timestamp": 1784671239.6796572
+      }
+    ]
+  },
+  "inference_count": 0,
+  "timestamp": 1784671239.682222
+}

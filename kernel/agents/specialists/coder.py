@@ -1,6 +1,6 @@
 """Coder Agent — writes, refactors, and debugs code"""
 
-from typing import Any, Dict, Optional, Set
+from typing import Any, Dict
 from kernel.agents.base import BaseAgent
 from kernel.agents.types import AgentCapability, AgentTask
 

@@ -8,7 +8,6 @@ On remote VPS: uses asyncssh (install with: pip install asyncssh).
 import asyncio
 import json
 import os
-import subprocess
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -86,7 +85,7 @@ class ShadowBridge:
 
     async def _ssh_connect(self) -> bool:
         try:
-            import asyncssh
+            import asyncssh  # noqa: F401
             return True
         except ImportError:
             return False

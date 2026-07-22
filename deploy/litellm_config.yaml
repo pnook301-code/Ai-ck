@@ -1,0 +1,581 @@
+# ================================================================
+# CK-NEXUS AIOS — LiteLLM Gateway Config
+# Top 100 AI Models with Free Tiers + Failover
+# ================================================================
+
+model_list:
+  # ══════════════════════════════════════════════════════════════
+  # OPENAI (12 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: gpt-5.5-sol
+    litellm_params:
+      model: openai/gpt-5.5-sol
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-5.6-sol
+    litellm_params:
+      model: openai/gpt-5.6-sol
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4o-mini
+    litellm_params:
+      model: openai/gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4-turbo
+    litellm_params:
+      model: openai/gpt-4-turbo
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: o3
+    litellm_params:
+      model: openai/o3
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: o3-mini
+    litellm_params:
+      model: openai/o3-mini
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: o3-pro
+    litellm_params:
+      model: openai/o3-pro
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: o4-mini
+    litellm_params:
+      model: openai/o4-mini
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4.1
+    litellm_params:
+      model: openai/gpt-4.1
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4.1-mini
+    litellm_params:
+      model: openai/gpt-4.1-mini
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gpt-4.1-nano
+    litellm_params:
+      model: openai/gpt-4.1-nano
+      api_key: os.environ/OPENAI_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # ANTHROPIC (6 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: claude-opus-4
+    litellm_params:
+      model: anthropic/claude-opus-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-sonnet-4
+    litellm_params:
+      model: anthropic/claude-sonnet-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3.5-sonnet
+    litellm_params:
+      model: anthropic/claude-3-5-sonnet-20241022
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3.5-haiku
+    litellm_params:
+      model: anthropic/claude-3-5-haiku-20241022
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3-opus
+    litellm_params:
+      model: anthropic/claude-3-opus-20240229
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: claude-3-haiku
+    litellm_params:
+      model: anthropic/claude-3-haiku-20240307
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # GOOGLE GEMINI (8 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: gemini-2.5-pro
+    litellm_params:
+      model: gemini/gemini-2.5-pro-preview-05-06
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-2.5-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash-preview-04-17
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-2.0-flash
+    litellm_params:
+      model: gemini/gemini-2.0-flash
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-2.0-flash-lite
+    litellm_params:
+      model: gemini/gemini-2.0-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-1.5-pro
+    litellm_params:
+      model: gemini/gemini-1.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-1.5-flash
+    litellm_params:
+      model: gemini/gemini-1.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-1.5-flash-8b
+    litellm_params:
+      model: gemini/gemini-1.5-flash-8b
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: gemini-2.0-flash-exp
+    litellm_params:
+      model: gemini/gemini-2.0-flash-exp
+      api_key: os.environ/GEMINI_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # DEEPSEEK (3 models — Cheapest Frontier)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: deepseek-v3
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+  - model_name: deepseek-r1
+    litellm_params:
+      model: deepseek/deepseek-reasoner
+      api_key: os.environ/DEEPSEEK_API_KEY
+  - model_name: deepseek-v2.5
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # GROQ (7 models — Always Free, Ultra Fast)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: groq-llama-3.3-70b
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-llama-3.1-8b
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-mixtral-8x7b
+    litellm_params:
+      model: groq/mixtral-8x7b-32768
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-gemma2-9b
+    litellm_params:
+      model: groq/gemma2-9b-it
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-llama-3.2-1b
+    litellm_params:
+      model: groq/llama-3.2-1b-preview
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-llama-3.2-3b
+    litellm_params:
+      model: groq/llama-3.2-3b-preview
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: groq-llama-3.2-11b
+    litellm_params:
+      model: groq/llama-3.2-11b-vision-preview
+      api_key: os.environ/GROQ_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # TOGETHER AI (5 models — Cheap Open Source)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: together-llama-3.3-70b
+    litellm_params:
+      model: together_meta-llama/Llama-3.3-70B-Instruct-Turbo
+      api_key: os.environ/TOGETHER_API_KEY
+  - model_name: together-qwen-72b
+    litellm_params:
+      model: together_Qwen/Qwen2.5-72B-Instruct-Turbo
+      api_key: os.environ/TOGETHER_API_KEY
+  - model_name: together-deepseek-v3
+    litellm_params:
+      model: together_deepseek-ai/DeepSeek-V3-0324
+      api_key: os.environ/TOGETHER_API_KEY
+  - model_name: together-mistral-large
+    litellm_params:
+      model: together_mistralai/Mistral-Saba-24B-Instruct
+      api_key: os.environ/TOGETHER_API_KEY
+  - model_name: together-llama-3.1-405b
+    litellm_params:
+      model: together_meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo
+      api_key: os.environ/TOGETHER_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # OPENROUTER (12 models — 150+ Available)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: openrouter-auto
+    litellm_params:
+      model: openrouter/auto
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-claude-opus
+    litellm_params:
+      model: openrouter/anthropic/claude-opus-4
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-gpt-4o
+    litellm_params:
+      model: openrouter/openai/gpt-4o
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-deepseek-r1
+    litellm_params:
+      model: openrouter/deepseek/deepseek-r1
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-gemini-2.5-pro
+    litellm_params:
+      model: openrouter/google/gemini-2.5-pro-preview
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-qwen-2.5-72b
+    litellm_params:
+      model: openrouter/qwen/qwen-2.5-72b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-llama-3.3-70b
+    litellm_params:
+      model: openrouter/meta-llama/llama-3.3-70b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-mistral-large
+    litellm_params:
+      model: openrouter/mistralai/mistral-large-2411
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-codestral
+    litellm_params:
+      model: openrouter/mistralai/codestral-2405
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-command-r-plus
+    litellm_params:
+      model: openrouter/cohere/command-r-plus
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-dbrx-instruct
+    litellm_params:
+      model: openrouter/databricks/dbrx-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: openrouter-grok-3
+    litellm_params:
+      model: openrouter/x-ai/grok-3
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # MISTRAL (5 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: mistral-large
+    litellm_params:
+      model: mistral/mistral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: mistral-medium
+    litellm_params:
+      model: mistral/mistral-medium-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: mistral-small
+    litellm_params:
+      model: mistral/mistral-small-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: codestral
+    litellm_params:
+      model: mistral/codestral-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: pixtral-large
+    litellm_params:
+      model: mistral/pixtral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # xAI / GROK (3 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: grok-3
+    litellm_params:
+      model: xai/grok-3
+      api_key: os.environ/XAI_API_KEY
+  - model_name: grok-3-mini
+    litellm_params:
+      model: xai/grok-3-mini
+      api_key: os.environ/XAI_API_KEY
+  - model_name: grok-2
+    litellm_params:
+      model: xai/grok-2
+      api_key: os.environ/XAI_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # COHERE (3 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: command-r-plus
+    litellm_params:
+      model: cohere/command-r-plus
+      api_key: os.environ/COHERE_API_KEY
+  - model_name: command-r
+    litellm_params:
+      model: cohere/command-r
+      api_key: os.environ/COHERE_API_KEY
+  - model_name: command-r-light
+    litellm_params:
+      model: cohere/command-r-light
+      api_key: os.environ/COHERE_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # BEDROCK / AWS (4 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: bedrock-claude-opus
+    litellm_params:
+      model: bedrock/anthropic.claude-opus-4-20250514-v1:0
+      api_key: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_region_name: us-east-1
+  - model_name: bedrock-claude-sonnet
+    litellm_params:
+      model: bedrock/anthropic.claude-sonnet-4-20250514-v1:0
+      api_key: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_region_name: us-east-1
+  - model_name: bedrock-titan
+    litellm_params:
+      model: bedrock/amazon.titan-text-premier-v1:0
+      api_key: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_region_name: us-east-1
+  - model_name: bedrock-llama-3.3-70b
+    litellm_params:
+      model: bedrock/meta.llama3-3-70b-instruct-v1:0
+      api_key: os.environ/AWS_ACCESS_KEY_ID
+      aws_secret_access_key: os.environ/AWS_SECRET_ACCESS_KEY
+      aws_region_name: us-east-1
+
+  # ══════════════════════════════════════════════════════════════
+  # VERTEX AI / Google Cloud (4 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: vertex-gemini-pro
+    litellm_params:
+      model: vertex_ai/gemini-2.5-pro-preview-05-06
+      api_key: os.environ/GOOGLE_APPLICATION_CREDENTIALS
+      vertex_project: os.environ/VERTEX_PROJECT_ID
+  - model_name: vertex-gemini-flash
+    litellm_params:
+      model: vertex_ai/gemini-2.0-flash
+      api_key: os.environ/GOOGLE_APPLICATION_CREDENTIALS
+      vertex_project: os.environ/VERTEX_PROJECT_ID
+  - model_name: vertex-claude-opus
+    litellm_params:
+      model: vertex_ai/claude-opus-4@20250514
+      api_key: os.environ/GOOGLE_APPLICATION_CREDENTIALS
+      vertex_project: os.environ/VERTEX_PROJECT_ID
+  - model_name: vertex-claude-sonnet
+    litellm_params:
+      model: vertex_ai/claude-sonnet-4@20250514
+      api_key: os.environ/GOOGLE_APPLICATION_CREDENTIALS
+      vertex_project: os.environ/VERTEX_PROJECT_ID
+
+  # ══════════════════════════════════════════════════════════════
+  # AZURE OPENAI (4 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: azure-gpt-4o
+    litellm_params:
+      model: azure/gpt-4o
+      api_key: os.environ/AZURE_API_KEY
+      api_base: os.environ/AZURE_API_BASE
+      api_version: 2024-08-01-preview
+  - model_name: azure-gpt-4o-mini
+    litellm_params:
+      model: azure/gpt-4o-mini
+      api_key: os.environ/AZURE_API_KEY
+      api_base: os.environ/AZURE_API_BASE
+      api_version: 2024-08-01-preview
+  - model_name: azure-o3-mini
+    litellm_params:
+      model: azure/o3-mini
+      api_key: os.environ/AZURE_API_KEY
+      api_base: os.environ/AZURE_API_BASE
+      api_version: 2024-08-01-preview
+  - model_name: azure-gpt-4-turbo
+    litellm_params:
+      model: azure/gpt-4-turbo
+      api_key: os.environ/AZURE_API_KEY
+      api_base: os.environ/AZURE_API_BASE
+      api_version: 2024-08-01-preview
+
+  # ══════════════════════════════════════════════════════════════
+  # ALIBABA QWEN (3 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: qwen-max
+    litellm_params:
+      model: openai/qwen-max
+      api_key: os.environ/DASHSCOPE_API_KEY
+      api_base: https://dashscope.aliyuncs.com/compatible-mode/v1
+  - model_name: qwen-plus
+    litellm_params:
+      model: openai/qwen-plus
+      api_key: os.environ/DASHSCOPE_API_KEY
+      api_base: https://dashscope.aliyuncs.com/compatible-mode/v1
+  - model_name: qwen-turbo
+    litellm_params:
+      model: openai/qwen-turbo
+      api_key: os.environ/DASHSCOPE_API_KEY
+      api_base: https://dashscope.aliyuncs.com/compatible-mode/v1
+
+  # ══════════════════════════════════════════════════════════════
+  # ZHIPU GLM (2 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: glm-4
+    litellm_params:
+      model: openai/glm-4
+      api_key: os.environ/ZHIPU_API_KEY
+      api_base: https://open.bigmodel.cn/api/paas/v4
+  - model_name: glm-4-flash
+    litellm_params:
+      model: openai/glm-4-flash
+      api_key: os.environ/ZHIPU_API_KEY
+      api_base: https://open.bigmodel.cn/api/paas/v4
+
+  # ══════════════════════════════════════════════════════════════
+  # FREE MODELS (Always Free — No API Key Needed for Groq)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: free-llama-3.3-70b
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: free-llama-3.1-8b
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: free-gemma2-9b
+    litellm_params:
+      model: groq/gemma2-9b-it
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: free-mixtral-8x7b
+    litellm_params:
+      model: groq/mixtral-8x7b-32768
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: free-llama-3.2-11b
+    litellm_params:
+      model: groq/llama-3.2-11b-vision-preview
+      api_key: os.environ/GROQ_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # SPECIALIZED / CODING (6 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: codestral-mamba
+    litellm_params:
+      model: mistral/codestral-mamba-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: gpt-4-codex
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: deepseek-coder
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+  - model_name: together-starcoder2
+    litellm_params:
+      model: together_bigcode/starcoder2-15b
+      api_key: os.environ/TOGETHER_API_KEY
+  - model_name: groq-deepseek-r1
+    litellm_params:
+      model: groq/deepseek-r1-distill-llama-70b
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: openrouter-deepseek-coder
+    litellm_params:
+      model: openrouter/deepseek/deepseek-coder
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # MULTIMODAL / VISION (5 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: gpt-4o-vision
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: gemini-pro-vision
+    litellm_params:
+      model: gemini/gemini-1.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: claude-sonnet-vision
+    litellm_params:
+      model: anthropic/claude-sonnet-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: groq-llama-vision
+    litellm_params:
+      model: groq/llama-3.2-11b-vision-preview
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: mistral-pixtral
+    litellm_params:
+      model: mistral/pixtral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+
+  # ══════════════════════════════════════════════════════════════
+  # CHINESE MODELS (5 models — via DashScope/OpenAI-compat)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: deepseek-chat-cn
+    litellm_params:
+      model: openai/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+      api_base: https://api.deepseek.com/v1
+  - model_name: qwen-max-cn
+    litellm_params:
+      model: openai/qwen-max
+      api_key: os.environ/DASHSCOPE_API_KEY
+      api_base: https://dashscope.aliyuncs.com/compatible-mode/v1
+  - model_name: glm-4-plus
+    litellm_params:
+      model: openai/glm-4-plus
+      api_key: os.environ/ZHIPU_API_KEY
+      api_base: https://open.bigmodel.cn/api/paas/v4
+  - model_name: ernie-4
+    litellm_params:
+      model: openai/ernie-4.0-8k
+      api_key: os.environ/BAIDU_API_KEY
+      api_base: https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop
+  - model_name: doubao-pro
+    litellm_params:
+      model: openai/doubao-pro-256k
+      api_key: os.environ/ARK_API_KEY
+      api_base: https://ark.cn-beijing.volces.com/api/v3
+
+  # ══════════════════════════════════════════════════════════════
+  # SPECIALTY MODELS (6 models)
+  # ══════════════════════════════════════════════════════════════
+  - model_name: perplexity-pro
+    litellm_params:
+      model: openai/sonar-pro
+      api_key: os.environ/PERPLEXITY_API_KEY
+      api_base: https://api.perplexity.ai
+  - model_name: perplexity-reasoning
+    litellm_params:
+      model: openai/sonar-reasoning-pro
+      api_key: os.environ/PERPLEXITY_API_KEY
+      api_base: https://api.perplexity.ai
+  - model_name: fireworks-llama
+    litellm_params:
+      model: openai/accounts/fireworks/models/llama-v3p3-70b-instruct
+      api_key: os.environ/FIREWORKS_API_KEY
+      api_base: https://api.fireworks.ai/inference/v1
+  - model_name: fireworks-deepseek
+    litellm_params:
+      model: openai/accounts/fireworks/models/deepseek-v3
+      api_key: os.environ/FIREWORKS_API_KEY
+      api_base: https://api.fireworks.ai/inference/v1
+  - model_name: novita-llama
+    litellm_params:
+      model: openai/meta-llama/llama-3.3-70b-instruct
+      api_key: os.environ/NOVITA_API_KEY
+      api_base: https://api.novita.ai/v3/openai
+  - model_name: siliconflow-qwen
+    litellm_params:
+      model: openai/Qwen/Qwen2.5-72B-Instruct
+      api_key: os.environ/SILICONFLOW_API_KEY
+      api_base: https://api.siliconflow.cn/v1
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 3
+  retry_after: 5
+  timeout: 180
+  allowed_fails: 3
+  cooldown_time: 60
+  routing_args:
+    num_retries: 3
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  completion_model: gpt-4o-mini
+
+litellm_settings:
+  drop_params: true
+  set_verbose: false
+  num_retries: 3
+  fallbacks:
+    - gpt-5.5-sol: [claude-opus-4, gemini-2.5-pro, deepseek-v3]
+    - gpt-4o: [claude-sonnet-4, gemini-2.5-flash, deepseek-v3]
+    - gpt-4o-mini: [groq-llama-3.3-70b, deepseek-v3, together-llama-3.3-70b]
+    - claude-opus-4: [gpt-5.5-sol, gemini-2.5-pro, deepseek-v3]
+    - gemini-2.5-pro: [gpt-5.5-sol, claude-opus-4, deepseek-v3]
+    - deepseek-v3: [groq-llama-3.3-70b, together-llama-3.3-70b, free-llama-3.3-70b]
+    - deepseek-r1: [o3-mini, groq-deepseek-r1, free-llama-3.3-70b]
+    - free-llama-3.3-70b: [groq-llama-3.3-70b, free-llama-3.1-8b, free-gemma2-9b]

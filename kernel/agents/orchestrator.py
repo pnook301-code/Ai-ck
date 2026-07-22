@@ -1,5 +1,5 @@
 """Orchestrator Agent - plans and coordinates multi-agent workflows"""
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List
 from .base import BaseAgent
 from .types import AgentCapability, AgentTask
 

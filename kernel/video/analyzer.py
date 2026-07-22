@@ -1,8 +1,7 @@
 """VideoAnalyzer — orchestrates frame extraction, transcription, and AI analysis"""
 
-import os
 import time
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 from .types import (
     VideoAnalysisResult, VideoMeta, VideoSourceType,

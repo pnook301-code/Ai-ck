@@ -2,7 +2,6 @@
 from typing import Any, Callable, Dict, List, Optional, Awaitable
 import asyncio
 import time
-import inspect
 
 from .types import FunctionDefinition, FunctionResult, FunctionStatus, FunctionCategory
 

@@ -1,8 +1,7 @@
 """Metrics Collection - Prometheus integration"""
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, List
 from enum import Enum
 from dataclasses import dataclass, field
-from datetime import datetime
 import time
 import threading
 
@@ -88,7 +87,6 @@ class MetricsCollector:
             }
 
     def collect_system_metrics(self):
-        import os
         import psutil
         self.gauge("system.cpu.percent", psutil.cpu_percent())
         self.gauge("system.memory.percent", psutil.virtual_memory().percent)

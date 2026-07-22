@@ -1,6 +1,6 @@
 """Graph store for relational memory — entity-links with weighted traversal"""
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 from .types import MemoryUnit, MemoryLink
 
 

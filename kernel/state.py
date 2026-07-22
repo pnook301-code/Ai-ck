@@ -1,10 +1,9 @@
 """State Management"""
-from typing import Any, Dict, Optional, TypeVar
+from typing import Any, Dict, TypeVar
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 import json
-import asyncio
 import threading
 
 T = TypeVar('T')

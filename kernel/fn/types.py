@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional, Awaitable
+from typing import Any, Callable, Dict, List, Optional
 from enum import Enum
 import time
 import uuid
@@ -16,6 +16,7 @@ class FunctionCategory(Enum):
     NETWORK_PROXY = "network_proxy"
     TERMUX_MOBILE = "termux_mobile"
     ADVANCED_LOGIC = "advanced_logic"
+    SHADOW_BRIDGE = "shadow_bridge"
 
 
 class FunctionStatus(Enum):

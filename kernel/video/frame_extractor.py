@@ -2,9 +2,7 @@
 
 import os
 import tempfile
-import uuid
 from typing import List, Optional, Tuple
-from pathlib import Path
 
 from .types import FrameInfo, VideoMeta, VideoSourceType
 from .scene_detector import SceneDetector
@@ -40,7 +38,7 @@ class VideoFrameExtractor:
             return source, meta
 
         import yt_dlp
-        outtmpl = os.path.join(self._work_dir, f"%(id)s.%(ext)s")
+        outtmpl = os.path.join(self._work_dir, "%(id)s.%(ext)s")
         ydl_opts = {
             "outtmpl": outtmpl,
             "format": "bestvideo[height<=1080]+bestaudio/best[height<=1080]",
@@ -84,7 +82,6 @@ class VideoFrameExtractor:
             raise RuntimeError(f"Cannot open video: {video_path}")
 
         video_fps = cap.get(cv2.CAP_PROP_FPS)
-        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         meta.fps = video_fps
         meta.width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         meta.height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))

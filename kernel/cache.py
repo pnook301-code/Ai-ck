@@ -1,10 +1,8 @@
 """Cache Service - multiple backend support"""
 from typing import Any, Dict, Optional, Callable
 from enum import Enum
-from datetime import datetime, timedelta
 import time
 import threading
-import json
 
 
 class CacheBackend(Enum):

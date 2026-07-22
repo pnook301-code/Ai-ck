@@ -1,11 +1,9 @@
 """Task Scheduler - cron-like scheduling"""
-from typing import Any, Callable, Dict, List, Optional, Awaitable
+from typing import Any, Callable, Dict, List, Optional
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
 import asyncio
 import time
 import uuid
-import logging
 
 
 @dataclass

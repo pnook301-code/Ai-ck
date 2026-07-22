@@ -1,5 +1,5 @@
 """Agent Registry - manages agent registration and discovery"""
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 from .base import BaseAgent
 from .types import AgentCapability
 

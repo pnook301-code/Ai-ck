@@ -1,6 +1,6 @@
 """ICE agents — Architect, Critic, Judge"""
 
-from typing import Any, Dict, Optional, Set
+from typing import Any, Dict
 from kernel.agents.base import BaseAgent
 from kernel.agents.types import AgentCapability, AgentTask
 

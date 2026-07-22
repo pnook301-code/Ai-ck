@@ -1,6 +1,6 @@
 """DevOps Agent — manages deployment and infrastructure"""
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from kernel.agents.base import BaseAgent
 from kernel.agents.types import AgentCapability, AgentTask
 

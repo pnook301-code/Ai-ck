@@ -1,6 +1,6 @@
 """Reviewer Agent — reviews code, plans, and documentation for quality"""
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from kernel.agents.base import BaseAgent
 from kernel.agents.types import AgentCapability, AgentTask
 

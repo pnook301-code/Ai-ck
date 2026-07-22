@@ -3,7 +3,7 @@
 import time
 from typing import Any, Dict, List, Optional
 from .types import (
-    MemoryUnit, MemoryQuery, MemoryStats, MemoryLink,
+    MemoryUnit, MemoryStats, MemoryLink,
     MemoryType, MemoryPriority,
 )
 from .vector_store import VectorStore

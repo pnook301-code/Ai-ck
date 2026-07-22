@@ -1,14 +1,11 @@
 """Security Service - authentication and authorization"""
-from typing import Any, Callable, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set
 from dataclasses import dataclass, field
 from enum import Enum
-from datetime import datetime, timedelta, timezone
 import hashlib
 import hmac
 import time
 import uuid
-import logging
-import os
 
 
 class AuthProvider(Enum):

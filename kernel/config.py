@@ -2,7 +2,7 @@
 CK-NEXUS Kernel Configuration
 """
 from dataclasses import dataclass, field
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any
 from pathlib import Path
 from enum import Enum
 import os

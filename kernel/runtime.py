@@ -5,13 +5,10 @@ import asyncio
 import signal
 import sys
 import time
-import uuid
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
-from datetime import datetime
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Awaitable
-import logging
+from typing import Any, Callable, Dict, List, Awaitable
 
 from .config import KernelConfig
 from .registry import ServiceRegistry, ServiceDescriptor, ServiceLifetime

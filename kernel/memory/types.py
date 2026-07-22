@@ -1,7 +1,7 @@
 """Memory OS types — extended with Knowledge Graph ontology"""
 
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 from enum import Enum
 import time
 import uuid

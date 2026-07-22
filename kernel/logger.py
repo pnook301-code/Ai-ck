@@ -1,7 +1,7 @@
 """Structured Logging"""
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from enum import Enum
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import json
 import logging
@@ -80,7 +80,7 @@ class StructuredLogger:
 
     def _log(self, level: LogLevel, message: str, **kwargs):
         record = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "level": level.value,
             "logger": self._name,
             "message": message,

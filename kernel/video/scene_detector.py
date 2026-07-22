@@ -1,6 +1,6 @@
 """Scene change detector — identifies keyframes where visual content changes"""
 
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 import numpy as np
 
 
@@ -66,7 +66,6 @@ class SceneDetector:
         if not cap.isOpened():
             return []
         video_fps = cap.get(cv2.CAP_PROP_FPS)
-        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         sample_interval = max(1, int(video_fps / fps_sample))
         frames_buf: List[Tuple[int, np.ndarray, float]] = []
         frame_idx = 0

@@ -1,11 +1,10 @@
 """Unified OrchestratorEngine — connects Kernel + Agents + Functions + Memory + Knowledge Graph + Video"""
 
 import logging
-import time
 from collections import OrderedDict
-from typing import Any, Dict, List, Optional, Callable
+from typing import Any, Dict, Optional
 from kernel.events import EventBus, Event
-from kernel.memory import MemoryOS, MemoryUnit, MemoryType, MemoryPriority
+from kernel.memory import MemoryOS, MemoryType
 from kernel.memory.knowledge_graph import KnowledgeGraph
 from kernel.memory.types import (
     KnowledgeUnit, KnowledgeRelation, EntityType, RelationType,
@@ -173,8 +172,8 @@ class OrchestratorEngine:
         if watch_params:
             return await self._process_watch(input_text, watch_params, source)
 
-        ep_unit = self.memory.remember(input_text, MemoryType.EPISODIC,
-                                        tags=["input", source], source=source)
+        self.memory.remember(input_text, MemoryType.EPISODIC,
+                             tags=["input", source], source=source)
 
         extraction = self.knowledge_pipeline.process_text(input_text, source=source)
         for entity in extraction.get("entities", []):
@@ -189,8 +188,8 @@ class OrchestratorEngine:
         self.memory.remember(f"Plan: {plan['objective']}", MemoryType.SEMANTIC,
                              tags=["plan"], source="orchestrator")
 
-        knowledge_context = self._get_knowledge_context(input_text)
-        memory_hits = self.memory.recall(input_text, top_k=3)
+        self._get_knowledge_context(input_text)
+        self.memory.recall(input_text, top_k=3)
 
         for step in plan["steps"]:
             agent_name = step["agent"]
@@ -253,8 +252,8 @@ class OrchestratorEngine:
         return {"related_entities": related[:5]}
 
     async def _process_watch(self, input_text: str, params: Dict[str, Any], source: str) -> Dict[str, Any]:
-        ep_unit = self.memory.remember(input_text, MemoryType.EPISODIC,
-                                        tags=["input", source, "video.watch"], source=source)
+        self.memory.remember(input_text, MemoryType.EPISODIC,
+                             tags=["input", source, "video.watch"], source=source)
 
         try:
             etype = params.get("entity_type", "document")

@@ -4,8 +4,7 @@ import asyncio
 import os
 import shutil
 import tempfile
-import uuid
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 
 class SandboxExecutor:

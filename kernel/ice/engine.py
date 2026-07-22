@@ -1,8 +1,6 @@
 """Iterative Consensus Engine — multi-agent feedback loop with DoD gate"""
 
-import asyncio
 import json
-import time
 from typing import Any, Dict, List, Optional, Callable
 
 from .types import IterationResult, ROLES

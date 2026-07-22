@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CK-NEXUS AIOS — Enterprise AI Operating System</title>
+    <meta name="description" content="CK-NEXUS AIOS: The most comprehensive Enterprise AI Operating System. 110+ functions, 100+ AI models, Knowledge Graph, ICE Engine, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">⬡</span>
+                <span class="logo-text">CK-NEXUS</span>
+                <span class="logo-badge">AIOS</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#platform">Platform</a>
+                <a href="#models">AI Models</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#docs">Docs</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#demo" class="btn btn-outline">Live Demo</a>
+                <a href="#get-started" class="btn btn-primary">Get Started Free</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-badge">Enterprise AI Operating System</div>
+            <h1 class="hero-title">
+                The Complete<br>
+                <span class="gradient-text">AI Operating System</span><br>
+                for Enterprise
+            </h1>
+            <p class="hero-subtitle">
+                110+ Functions · 100+ AI Models · Knowledge Graph · ICE Engine · Zero-Downtime Provider Switching
+            </p>
+            <div class="hero-actions">
+                <a href="#get-started" class="btn btn-primary btn-lg">
+                    Start Free →
+                </a>
+                <a href="#demo" class="btn btn-outline btn-lg">
+                    ▶ Live Demo
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="110">0</span>
+                    <span class="stat-label">Functions</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">0</span>
+                    <span class="stat-label">AI Models</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="607">0</span>
+                    <span class="stat-label">Tests Passing</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="99">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Uptime SLA</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">CK-NEXUS AIOS — Terminal</span>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-text" id="terminalText"></span>
+                        <span class="terminal-cursor">|</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Core Features</span>
+                <h2>Everything You Need to <span class="gradient-text">Build, Deploy, and Scale</span> AI</h2>
+                <p>From zero to production in minutes, not months.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card large">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Knowledge Graph Engine</h3>
+                    <p>15 entity types, 13 relation types, BFS traversal, transitive inference, JSON persistence. Query your data like never before.</p>
+                    <div class="feature-metrics">
+                        <span>76 Entities</span>
+                        <span>81 Relations</span>
+                        <span>6 Inference Rules</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>110+ Functions</h3>
+                    <p>System, Security, OSINT, AI, Network, Mobile — all pre-built and ready to use.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>100+ AI Models</h3>
+                    <p>GPT-5, Claude, Gemini, DeepSeek, Llama — unified API with auto-failover.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Zero-Downtime Switching</h3>
+                    <p>Change AI providers without stopping. Automatic failover. No interruptions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>ICE Engine</h3>
+                    <p>Iterative Consensus: Architect → Critic → Judge. Multi-agent feedback loops for quality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Security First</h3>
+                    <p>bcrypt hashing, JWT tokens, RBAC, security scanning, vulnerability detection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Video Analysis</h3>
+                    <p>Scene detection, frame extraction, audio transcription, AI-powered insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Shadow Bridge</h3>
+                    <p>Dual-system architecture: Legit + Shadow on separate paths. Secure separation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="platform">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Production Stack</span>
+                <h2>Enterprise-Grade <span class="gradient-text">Infrastructure</span></h2>
+                <p>Everything runs on Docker with health checks, auto-restart, and monitoring.</p>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">🌐</div>
+                    <h4>Open WebUI</h4>
+                    <p>Beautiful chat interface for all AI models</p>
+                    <span class="port">:3000</span>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">🔌</div>
+                    <h4>LiteLLM Gateway</h4>
+                    <p>Unified API for 100+ AI models</p>
+                    <span class="port">:4000</span>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">🧠</div>
+                    <h4>n8n Automation</h4>
+                    <p>Visual workflow automation</p>
+                    <span class="port">:5678</span>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">💾</div>
+                    <h4>Qdrant Vector DB</h4>
+                    <p>AI memory and semantic search</p>
+                    <span class="port">:6333</span>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">🐘</div>
+                    <h4>PostgreSQL</h4>
+                    <p>Reliable shared database</p>
+                    <span class="port">:5432</span>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">⚡</div>
+                    <h4>Redis</h4>
+                    <p>High-speed caching layer</p>
+                    <span class="port">:6379</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="models">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">AI Models</span>
+                <h2>Access <span class="gradient-text">Every Major AI Model</span> Through One API</h2>
+                <p>Auto-failover. Pay only for what you use.</p>
+            </div>
+            <div class="models-table-wrapper">
+                <table class="models-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Models</th>
+                            <th>Price (per 1M tokens)</th>
+                            <th>Context</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="model-free">
+                            <td><span class="tier-badge free">FREE</span></td>
+                            <td>Groq Llama 3.3 70B, Mixtral 8x7B, Gemma 2</td>
+                            <td>$0</td>
+                            <td>131K</td>
+                            <td><span class="status-dot green"></span> Always On</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tier-badge economy">ECONOMY</span></td>
+                            <td>DeepSeek V3/R1, Gemini Flash</td>
+                            <td>$0.00027 - $1.10</td>
+                            <td>131K</td>
+                            <td><span class="status-dot green"></span> Available</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tier-badge standard">STANDARD</span></td>
+                            <td>GPT-4o, Claude Sonnet, Mistral, Qwen</td>
+                            <td>$0.002 - $15</td>
+                            <td>128K-2M</td>
+                            <td><span class="status-dot green"></span> Available</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tier-badge frontier">FRONTIER</span></td>
+                            <td>GPT-5.5, Claude Opus 4, Gemini Pro</td>
+                            <td>$0.015 - $75</td>
+                            <td>1M-2M</td>
+                            <td><span class="status-dot green"></span> Available</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Architecture</span>
+                <h2>Built for <span class="gradient-text">Scale and Reliability</span></h2>
+            </div>
+            <div class="arch-diagram">
+                <div class="arch-layer">
+                    <h4>Client Layer</h4>
+                    <div class="arch-boxes">
+                        <div class="arch-box">Web UI</div>
+                        <div class="arch-box">REST API</div>
+                        <div class="arch-box">CLI</div>
+                        <div class="arch-box">n8n</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Gateway Layer</h4>
+                    <div class="arch-boxes">
+                        <div class="arch-box highlight">LiteLLM (100+ Models)</div>
+                        <div class="arch-box">Provider Router</div>
+                        <div class="arch-box">Auto Failover</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>CK-NEXUS Core</h4>
+                    <div class="arch-boxes">
+                        <div class="arch-box">Knowledge Graph</div>
+                        <div class="arch-box">ICE Engine</div>
+                        <div class="arch-box">6 Agents</div>
+                        <div class="arch-box">110 Functions</div>
+                        <div class="arch-box">Video Analyzer</div>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <h4>Data Layer</h4>
+                    <div class="arch-boxes">
+                        <div class="arch-box">Qdrant</div>
+                        <div class="arch-box">PostgreSQL</div>
+                        <div class="arch-box">Redis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Pricing</span>
+                <h2>Simple, <span class="gradient-text">Transparent</span> Pricing</h2>
+                <p>Start free. Scale as you grow.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Community</h3>
+                    <div class="price">Free</div>
+                    <p>For individuals and open-source projects</p>
+                    <ul>
+                        <li>✓ 110 Functions</li>
+                        <li>✓ 6 Specialist Agents</li>
+                        <li>✓ Knowledge Graph</li>
+                        <li>✓ Free AI Models (Groq)</li>
+                        <li>✓ Community Support</li>
+                        <li>✗ Custom Domain</li>
+                        <li>✗ SLA</li>
+                    </ul>
+                    <a href="#get-started" class="btn btn-outline btn-full">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">$49<span>/mo</span></div>
+                    <p>For teams and growing businesses</p>
+                    <ul>
+                        <li>✓ Everything in Community</li>
+                        <li>✓ 100+ AI Models</li>
+                        <li>✓ Custom Domain</li>
+                        <li>✓ n8n Workflows</li>
+                        <li>✓ Video Analysis</li>
+                        <li>✓ Email Support</li>
+                        <li>✗ SLA</li>
+                    </ul>
+                    <a href="#get-started" class="btn btn-primary btn-full">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p>For large organizations with custom needs</p>
+                    <ul>
+                        <li>✓ Everything in Professional</li>
+                        <li>✓ RBAC & Multi-Tenant</li>
+                        <li>✓ Custom Integrations</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ SLA 99.9%</li>
+                        <li>✓ On-Premise Deploy</li>
+                        <li>✓ Audit Trail</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-full">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="get-started">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Quick Start</span>
+                <h2>Deploy CK-NEXUS AIOS in <span class="gradient-text">One Command</span></h2>
+            </div>
+            <div class="install-steps">
+                <div class="install-step">
+                    <div class="step-number">1</div>
+                    <h4>SSH into your VPS</h4>
+                    <div class="code-block">
+                        <code>ssh root@your-vps-ip</code>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">2</div>
+                    <h4>Run the installer</h4>
+                    <div class="code-block">
+                        <code>curl -sSL https://raw.githubusercontent.com/pnook301-code/Ai-ck/main/deploy/install_on_vps.sh | bash</code>
+                    </div>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">3</div>
+                    <h4>Access your AIOS</h4>
+                    <div class="code-block">
+                        <code>🌐 Chat UI: http://YOUR-IP:3000<br>🔌 API: http://YOUR-IP:4000<br>🧠 n8n: http://YOUR-IP:5678</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="docs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Documentation</span>
+                <h2>Everything You Need to <span class="gradient-text">Get Started</span></h2>
+            </div>
+            <div class="docs-grid">
+                <a href="docs/ARCHITECTURE.html" class="doc-card">
+                    <div class="doc-icon">📐</div>
+                    <h4>Architecture</h4>
+                    <p>System design, components, data flow</p>
+                </a>
+                <a href="docs/DEPLOYMENT.html" class="doc-card">
+                    <div class="doc-icon">🚀</div>
+                    <h4>Deployment</h4>
+                    <p>Install, configure, production setup</p>
+                </a>
+                <a href="docs/SECURITY.html" class="doc-card">
+                    <div class="doc-icon">🛡️</div>
+                    <h4>Security</h4>
+                    <p>Auth, encryption, best practices</p>
+                </a>
+                <a href="docs/OPERATIONS.html" class="doc-card">
+                    <div class="doc-icon">⚙️</div>
+                    <h4>Operations</h4>
+                    <p>Monitoring, backup, troubleshooting</p>
+                </a>
+                <a href="docs/COMMERCIAL.html" class="doc-card">
+                    <div class="doc-icon">💼</div>
+                    <h4>Commercial</h4>
+                    <p>Licensing, SLA, support plans</p>
+                </a>
+                <a href="docs/GLOBAL_AI_KNOWLEDGE_BASE.html" class="doc-card">
+                    <div class="doc-icon">🌍</div>
+                    <h4>AI Knowledge Base</h4>
+                    <p>100+ models, research, benchmarks</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">⬡</span>
+                    <span class="logo-text">CK-NEXUS</span>
+                    <p>The Enterprise AI Operating System</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#docs">Documentation</a>
+                    <a href="#get-started">Get Started</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="#">GitHub</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Status</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CK-NEXUS AIOS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

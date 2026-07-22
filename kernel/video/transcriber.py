@@ -43,7 +43,7 @@ class AudioTranscriber:
         if time_end is not None:
             cmd.extend(["-to", str(time_end)])
         cmd.extend(["-vn", "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1", audio_path])
-        r = subprocess.run(cmd, capture_output=True, timeout=600)
+        subprocess.run(cmd, capture_output=True, timeout=600)
         if not os.path.exists(audio_path) or os.path.getsize(audio_path) == 0:
             duration = (time_end or 30) - (time_start or 0)
             if duration <= 0:

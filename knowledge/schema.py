@@ -1,6 +1,6 @@
 """Knowledge Schema — ontology definitions and validation"""
 
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
 from kernel.memory.types import EntityType, RelationType
 

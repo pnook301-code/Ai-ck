@@ -1,7 +1,7 @@
 """Entity and Relation Extractors — parse text into KnowledgeGraph units"""
 
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 from kernel.memory.types import (
     KnowledgeUnit, KnowledgeRelation, EntityType, RelationType,
 )
@@ -19,14 +19,6 @@ class EntityExtractor:
                           source: str = "extraction") -> List[KnowledgeUnit]:
         units = []
         seen = set()
-
-        patterns = {
-            "API_KEY": r'[Ss][Kk]-[A-Za-z0-9]{20,}',
-            "PATH": r'/[\w/.-]+',
-            "VERSION": r'\bv?\d+\.\d+\.\d+\b',
-            "FUNCTION_CALL": r'\w+\([^)]*\)',
-            "CONCEPT": r'[A-Z][a-z]+(?:\s[A-Z][a-z]+)+',
-        }
 
         for etype, pattern in self._patterns.items():
             for match in pattern.finditer(text):
@@ -54,7 +46,7 @@ class EntityExtractor:
                 if name not in seen:
                     seen.add(name)
                     units.append(KnowledgeUnit(
-                        name=name, description=f"Referenced file",
+                        name=name, description="Referenced file",
                         entity_type=EntityType.CODE, source=source,
                         properties={"path": line}, confidence=0.7,
                     ))
@@ -118,7 +110,6 @@ class RelationExtractor:
 
     def extract_from_entities(self, entities: List[KnowledgeUnit]) -> List[KnowledgeRelation]:
         relations = []
-        entity_map = {e.name.lower(): e.id for e in entities if e.name}
 
         for i, src in enumerate(entities):
             for j, tgt in enumerate(entities):

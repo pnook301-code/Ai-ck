@@ -1,7 +1,6 @@
 """Agent Manager - manages agent lifecycle and workflow execution"""
 import time
 from typing import Any, Dict, List, Optional
-from .types import AgentTask
 from .registry import AgentRegistry
 from .orchestrator import OrchestratorAgent
 from .base import BaseAgent

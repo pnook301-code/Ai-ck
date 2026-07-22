@@ -1,8 +1,7 @@
 """Health Checks - service health monitoring"""
-from typing import Any, Callable, Dict, List, Optional, Awaitable
+from typing import Any, Callable, Dict, List, Awaitable
 from dataclasses import dataclass, field
 from enum import Enum
-from datetime import datetime
 import asyncio
 import time
 

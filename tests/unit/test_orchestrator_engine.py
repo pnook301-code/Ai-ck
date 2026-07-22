@@ -14,7 +14,7 @@ def engine():
 class TestOrchestratorEngine:
     @pytest.mark.asyncio
     async def test_bootstrap_registers_functions(self, engine):
-        assert len(engine.fn_registry._functions) == 100
+        assert len(engine.fn_registry._functions) == 110
 
     @pytest.mark.asyncio
     async def test_process_stores_memory(self, engine):
@@ -44,7 +44,7 @@ class TestOrchestratorEngine:
         assert "memory" in status
         assert "functions" in status
         assert "agents" in status
-        assert status["functions"]["registered"] == 100
+        assert status["functions"]["registered"] == 110
 
     @pytest.mark.asyncio
     async def test_remember_event(self, engine):

@@ -1,7 +1,7 @@
 """OSINT & Reconnaissance — functions 3.1–3.10"""
 
 from typing import Any, Dict
-from .types import FunctionDefinition, FunctionResult, FunctionCategory
+from .types import FunctionDefinition, FunctionCategory
 
 
 def _def(name: str, id: str, desc: str, handler, params: dict) -> FunctionDefinition:

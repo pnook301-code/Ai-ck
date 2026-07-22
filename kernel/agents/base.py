@@ -1,5 +1,5 @@
 """Base Agent - kernel-aware agent with EventBus integration"""
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Set
 import time
 
 from .types import AgentMessage, AgentTask, AgentStatus, AgentCapability

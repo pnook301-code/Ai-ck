@@ -1,4 +1,4 @@
-"""Function Registry - 100 auto-functions for CK-NEXUS AIOS"""
+"""Function Registry - 110 auto-functions for CK-NEXUS AIOS"""
 from .types import FunctionDefinition, FunctionResult, FunctionCategory, FunctionStatus
 from .registry import FunctionRegistry
 
@@ -22,6 +22,7 @@ def register_all_categories(registry: FunctionRegistry) -> int:
     from .category8 import register_network_proxy
     from .category9 import register_termux_mobile
     from .category10 import register_advanced_logic
+    from .category11 import register_shadow_bridge
 
     count_before = len(registry._functions)
     register_system_core(registry)
@@ -34,4 +35,5 @@ def register_all_categories(registry: FunctionRegistry) -> int:
     register_network_proxy(registry)
     register_termux_mobile(registry)
     register_advanced_logic(registry)
+    register_shadow_bridge(registry)
     return len(registry._functions) - count_before

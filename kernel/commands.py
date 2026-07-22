@@ -1,11 +1,8 @@
 """Command Bus - command pattern dispatch"""
 from typing import Any, Callable, Dict, Optional, Awaitable
 from dataclasses import dataclass, field
-from datetime import datetime
-import asyncio
 import uuid
 import time
-import logging
 
 
 @dataclass
@@ -109,7 +106,13 @@ class CommandBus:
         chain = handler
         for middleware in reversed(self._middleware):
             next_handler = chain
-            chain = lambda cmd, m=middleware, n=next_handler: m(cmd, n)
+
+            def _make_chain(m, n):
+                def _chain(cmd):
+                    return m(cmd, n)
+                return _chain
+
+            chain = _make_chain(middleware, next_handler)
         return chain
 
     def has_handler(self, command_name: str) -> bool:

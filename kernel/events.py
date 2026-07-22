@@ -1,10 +1,9 @@
 """Event Bus - async event processing"""
-from typing import Any, Callable, Dict, List, Optional, Awaitable
+from typing import Any, Callable, Dict, List, Awaitable
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import asyncio
 import uuid
-import logging
 
 
 @dataclass
