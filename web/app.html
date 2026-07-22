@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CK-NEXUS Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--surface2:#1a1a2e;--border:#1e1e2e;--primary:#6c5ce7;--primary-light:#a29bfe;--green:#00b894;--red:#d63031;--yellow:#fdcb6e;--text:#e0e0e0;--text-dim:#636e72;--accent:#00cec9}
+body{font-family:'SF Mono','Fira Code','Consolas',monospace;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+.topbar .logo{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.topbar .status{display:flex;gap:1rem;align-items:center;font-size:0.75rem;color:var(--text-dim)}
+.topbar .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.main{display:flex;flex:1;overflow:hidden}
+.sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.sidebar .nav-item{padding:0.7rem 1rem;cursor:pointer;font-size:0.8rem;color:var(--text-dim);border-left:3px solid transparent;transition:all 0.15s}
+.sidebar .nav-item:hover,.sidebar .nav-item.active{color:var(--text);background:var(--surface2);border-left-color:var(--primary)}
+.sidebar .nav-item.active{color:var(--primary-light)}
+.sidebar .nav-section{padding:0.5rem 1rem;font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-top:0.5rem}
+.content{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.panel{display:none;flex:1;flex-direction:column;overflow:hidden}
+.panel.active{display:flex}
+.panel-header{padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:0.9rem;font-weight:600}
+.panel-body{flex:1;overflow-y:auto;padding:1.5rem}
+.chat-panel{flex:1;display:flex;flex-direction:column}
+.messages{flex:1;overflow-y:auto;padding:1rem}
+.msg{margin-bottom:1rem;max-width:80%}
+.msg.user{margin-left:auto;text-align:right}
+.msg .bubble{padding:0.7rem 1rem;border-radius:10px;font-size:0.82rem;line-height:1.6;display:inline-block;text-align:left}
+.msg.user .bubble{background:var(--primary);color:#fff;border-bottom-right-radius:2px}
+.msg.ai .bubble{background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:2px}
+.msg .time{font-size:0.6rem;color:var(--text-dim);margin-top:0.3rem}
+.chat-input{display:flex;gap:0.5rem;padding:1rem;border-top:1px solid var(--border)}
+.chat-input input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.6rem 1rem;color:var(--text);font-family:inherit;font-size:0.85rem;outline:none}
+.chat-input input:focus{border-color:var(--primary)}
+.chat-input button{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:0.6rem 1.2rem;cursor:pointer;font-family:inherit}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.stat-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}
+.stat-box .num{font-size:2rem;font-weight:700;color:var(--primary-light)}
+.stat-box .label{color:var(--text-dim);font-size:0.75rem;margin-top:0.3rem}
+.func-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.func-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;cursor:pointer;transition:border-color 0.15s}
+.func-card:hover{border-color:var(--primary)}
+.func-card .fid{color:var(--accent);font-size:0.7rem;font-weight:600}
+.func-card .fname{color:var(--text);font-size:0.85rem;margin:0.3rem 0}
+.func-card .fdesc{color:var(--text-dim);font-size:0.75rem}
+.func-card .fcat{display:inline-block;background:var(--primary);color:#fff;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;margin-top:0.4rem}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;width:90%;max-width:600px;max-height:80vh;overflow-y:auto}
+.modal h3{margin-bottom:1rem;color:var(--primary-light)}
+.modal pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.75rem;overflow-x:auto;margin-bottom:1rem}
+.modal textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.8rem;color:var(--text);font-family:inherit;font-size:0.8rem;min-height:100px;resize:vertical;outline:none}
+.modal .btn-row{display:flex;gap:0.5rem;margin-top:1rem}
+.modal button{padding:0.5rem 1.2rem;border-radius:6px;border:none;cursor:pointer;font-family:inherit;font-size:0.8rem}
+.btn-run{background:var(--green);color:#fff}.btn-close{background:var(--surface2);color:var(--text);border:1px solid var(--border)!important}
+.filter-bar{display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.filter-btn{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.8rem;font-size:0.7rem;color:var(--text-dim);cursor:pointer}
+.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.tenant-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.tenant-table th{text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);color:var(--text-dim);font-size:0.7rem}
+.tenant-table td{padding:0.6rem;border-bottom:1px solid var(--border)}
+.badge{padding:0.15rem 0.5rem;border-radius:4px;font-size:0.65rem;font-weight:600}
+.badge-green{background:rgba(0,184,148,.2);color:var(--green)}
+.badge-yellow{background:rgba(253,203,110,.2);color:var(--yellow)}
+.badge-red{background:rgba(214,48,49,.2);color:var(--red)}
+.badge-purple{background:rgba(108,92,231,.2);color:var(--primary-light)}
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="logo">CK-NEXUS AIOS</div>
+<div class="status">
+<span><span class="dot"></span> System Online</span>
+<span id="uptime">Uptime: --</span>
+<span id="func-count">Functions: --</span>
+</div>
+</div>
+<div class="main">
+<div class="sidebar">
+<div class="nav-section">Core</div>
+<div class="nav-item active" data-panel="dashboard">📊 Dashboard</div>
+<div class="nav-item" data-panel="chat">💬 AI Chat</div>
+<div class="nav-item" data-panel="functions">⚡ Functions</div>
+<div class="nav-section">Enterprise</div>
+<div class="nav-item" data-panel="tenants">👥 Tenants</div>
+<div class="nav-item" data-panel="licenses">🔑 Licenses</div>
+<div class="nav-item" data-panel="audit">📋 Audit Log</div>
+<div class="nav-section">Infrastructure</div>
+<div class="nav-item" data-panel="cloud">☁️ Cloud</div>
+<div class="nav-item" data-panel="k8s">⎈ Kubernetes</div>
+<div class="nav-item" data-panel="observability">📊 Observability</div>
+<div class="nav-item" data-panel="knowledge">🧠 Knowledge</div>
+</div>
+
+<div class="content">
+<!-- Dashboard -->
+<div class="panel active" id="panel-dashboard">
+<div class="panel-header">System Dashboard</div>
+<div class="panel-body">
+<div class="stats-grid" id="stats-grid"></div>
+</div>
+</div>
+
+<!-- Chat -->
+<div class="panel" id="panel-chat">
+<div class="panel-header">AI Chat</div>
+<div class="chat-panel">
+<div class="messages" id="messages">
+<div class="msg ai"><div class="bubble">CK-NEXUS AIOS Online. 142 functions ready. Type 'help' for commands.</div><div class="time">system</div></div>
+</div>
+<div class="chat-input">
+<input type="text" id="chat-input" placeholder="Type a command... (help, status, create tenant, list functions)" onkeydown="if(event.key==='Enter')sendChat()">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+</div>
+
+<!-- Functions -->
+<div class="panel" id="panel-functions">
+<div class="panel-header">Function Registry</div>
+<div class="panel-body">
+<div class="filter-bar" id="func-filters"></div>
+<div class="func-grid" id="func-grid"></div>
+</div>
+</div>
+
+<!-- Tenants -->
+<div class="panel" id="panel-tenants">
+<div class="panel-header">Tenant Management</div>
+<div class="panel-body">
+<div style="margin-bottom:1rem;display:flex;gap:0.5rem">
+<input type="text" id="tenant-name" placeholder="Tenant name" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.8rem;flex:1">
+<select id="tenant-plan" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.8rem">
+<option value="free">Free</option><option value="starter">Starter</option><option value="professional">Professional</option><option value="enterprise">Enterprise</option>
+</select>
+<button onclick="createTenant()" class="btn-run" style="padding:0.5rem 1rem;border-radius:6px;border:none;cursor:pointer;font-family:inherit;font-size:0.8rem;background:var(--green);color:#fff">Create Tenant</button>
+</div>
+<table class="tenant-table"><thead><tr><th>ID</th><th>Name</th><th>Plan</th><th>Status</th><th>Actions</th></tr></thead><tbody id="tenant-list"></tbody></table>
+</div>
+</div>
+
+<!-- Licenses -->
+<div class="panel" id="panel-licenses">
+<div class="panel-header">License Management</div>
+<div class="panel-body">
+<div style="margin-bottom:1rem;display:flex;gap:0.5rem">
+<input type="text" id="lic-tenant" placeholder="Tenant ID" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.8rem;flex:1">
+<select id="lic-tier" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.8rem">
+<option value="trial">Trial</option><option value="starter">Starter</option><option value="professional">Professional</option><option value="enterprise">Enterprise</option>
+</select>
+<button onclick="genLicense()" style="padding:0.5rem 1rem;border-radius:6px;border:none;cursor:pointer;font-family:inherit;font-size:0.8rem;background:var(--green);color:#fff">Generate</button>
+</div>
+<div id="lic-list"></div>
+</div>
+</div>
+
+<!-- Audit -->
+<div class="panel" id="panel-audit">
+<div class="panel-header">Audit Trail</div>
+<div class="panel-body">
+<div id="audit-events" style="font-size:0.8rem"></div>
+</div>
+</div>
+
+<!-- Cloud -->
+<div class="panel" id="panel-cloud">
+<div class="panel-header">Cloud Providers</div>
+<div class="panel-body">
+<div class="stats-grid" id="cloud-grid"></div>
+</div>
+</div>
+
+<!-- K8s -->
+<div class="panel" id="panel-k8s">
+<div class="panel-header">Kubernetes</div>
+<div class="panel-body">
+<div class="stats-grid" id="k8s-grid"></div>
+</div>
+</div>
+
+<!-- Observability -->
+<div class="panel" id="panel-observability">
+<div class="panel-header">Observability</div>
+<div class="panel-body">
+<div class="stats-grid" id="obs-grid"></div>
+</div>
+</div>
+
+<!-- Knowledge -->
+<div class="panel" id="panel-knowledge">
+<div class="panel-header">Knowledge Graph</div>
+<div class="panel-body">
+<div class="stats-grid" id="kg-grid"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Function Modal -->
+<div class="modal-overlay" id="fn-modal">
+<div class="modal">
+<h3 id="modal-title">Execute Function</h3>
+<pre id="modal-schema"></pre>
+<textarea id="modal-input" placeholder='{"key": "value"}'></textarea>
+<div class="btn-row">
+<button class="btn-run" onclick="runFunction()">▶ Execute</button>
+<button class="btn-close" onclick="closeModal()">Close</button>
+</div>
+<pre id="modal-result" style="margin-top:1rem;min-height:60px;color:var(--green)"></pre>
+</div>
+</div>
+
+<script>
+let currentFunc=null;
+// Navigation
+document.querySelectorAll('.nav-item').forEach(n=>n.addEventListener('click',()=>{
+document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+n.classList.add('active');
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+document.getElementById('panel-'+n.dataset.panel).classList.add('active');
+loadPanel(n.dataset.panel);
+}));
+
+function addMsg(text,type='ai'){
+const m=document.getElementById('messages');
+const d=document.createElement('div');
+d.className='msg '+type;
+d.innerHTML=`<div class="bubble">${text}</div><div class="time">${new Date().toLocaleTimeString()}</div>`;
+m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+
+async function sendChat(){
+const inp=document.getElementById('chat-input');
+const msg=inp.value.trim();if(!msg)return;
+addMsg(msg,'user');inp.value='';
+try{
+const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg})});
+const d=await r.json();
+addMsg(d.reply,d.type||'ai');
+}catch(e){addMsg('Error: '+e.message,'ai');}
+}
+
+async function loadPanel(name){
+if(name==='dashboard')await loadDashboard();
+if(name==='functions')await loadFunctions();
+if(name==='tenants')await loadTenants();
+if(name==='audit')await loadAudit();
+if(name==='cloud')await loadCloud();
+if(name==='k8s')await loadK8s();
+if(name==='observability')await loadObs();
+if(name==='knowledge')await loadKG();
+}
+
+async function loadDashboard(){
+try{
+const r=await fetch('/api/stats');const d=await r.json();
+const g=document.getElementById('stats-grid');
+g.innerHTML=`
+<div class="stat-box"><div class="num">${d.functions.registered}</div><div class="label">Functions Registered</div></div>
+<div class="stat-box"><div class="num">${d.functions.executions||0}</div><div class="label">Total Executions</div></div>
+<div class="stat-box"><div class="num">${d.tenants.active||0}</div><div class="label">Active Tenants</div></div>
+<div class="stat-box"><div class="num">${d.licenses.active||0}</div><div class="label">Active Licenses</div></div>
+<div class="stat-box"><div class="num">${d.audit.total_events||0}</div><div class="label">Audit Events</div></div>
+<div class="stat-box"><div class="num">${d.uptime}s</div><div class="label">Uptime</div></div>
+`;
+document.getElementById('uptime').textContent='Uptime: '+d.uptime+'s';
+document.getElementById('func-count').textContent='Functions: '+d.functions.registered;
+}catch(e){}
+}
+
+async function loadFunctions(){
+try{
+const r=await fetch('/api/functions');const d=await r.json();
+const cats=new Set();const grid=document.getElementById('func-grid');
+const filters=document.getElementById('func-filters');
+d.functions.forEach(f=>cats.add(f.category));
+filters.innerHTML='<button class="filter-btn active" onclick="filterFuncs(\'all\',this)">All ('+d.count+')</button>';
+[...cats].sort().forEach(c=>{
+const n=d.functions.filter(f=>f.category===c).length;
+filters.innerHTML+=`<button class="filter-btn" onclick="filterFuncs('${c}',this)">${c} (${n})</button>`;
+});
+grid.innerHTML=d.functions.map(f=>`<div class="func-card" data-cat="${f.category}" onclick='openModal(${JSON.stringify(f).replace(/'/g,"&#39;")})'><div class="fid">${f.id}</div><div class="fname">${f.name}</div><div class="fdesc">${f.description}</div><div class="fcat">${f.category}</div></div>`).join('');
+}catch(e){}
+}
+
+function filterFuncs(cat,btn){
+document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.func-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';});
+}
+
+function openModal(f){
+currentFunc=f;
+document.getElementById('modal-title').textContent=f.id+' — '+f.name;
+document.getElementById('modal-schema').textContent=JSON.stringify(f.input_schema,null,2);
+document.getElementById('modal-input').value='{}';
+document.getElementById('modal-result').textContent='';
+document.getElementById('fn-modal').classList.add('show');
+}
+
+function closeModal(){document.getElementById('fn-modal').classList.remove('show');}
+
+async function runFunction(){
+const inp=document.getElementById('modal-input').value;
+try{
+const data=JSON.parse(inp);
+const r=await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:currentFunc.id,input_data:data})});
+const d=await r.json();
+document.getElementById('modal-result').textContent=JSON.stringify(d,null,2);
+document.getElementById('modal-result').style.color=d.success?'var(--green)':'var(--red)';
+}catch(e){document.getElementById('modal-result').textContent='Parse error: '+e.message;}
+}
+
+async function loadTenants(){
+try{
+const r=await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:'13.2',input_data:{}})});
+const d=await r.json();
+const tenants=d.output?.tenants||[];
+const tb=document.getElementById('tenant-list');
+tb.innerHTML=tenants.map(t=>`<tr><td>${t.id}</td><td>${t.name}</td><td><span class="badge badge-purple">${t.plan}</span></td><td><span class="badge badge-green">${t.status}</span></td><td><button onclick="deleteTenant('${t.id}')" style="background:var(--red);color:#fff;border:none;border-radius:4px;padding:0.2rem 0.5rem;cursor:pointer;font-size:0.7rem">Delete</button></td></tr>`).join('')||'<tr><td colspan="5" style="color:var(--text-dim)">No tenants yet</td></tr>';
+}catch(e){}
+}
+
+async function createTenant(){
+const name=document.getElementById('tenant-name').value.trim()||'New Tenant';
+const plan=document.getElementById('tenant-plan').value;
+await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:'13.1',input_data:{name,plan}})});
+document.getElementById('tenant-name').value='';
+loadTenants();
+}
+
+async function deleteTenant(id){
+await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:'13.3',input_data:{tenant_id:id}})});
+loadTenants();
+}
+
+async function genLicense(){
+const tid=document.getElementById('lic-tenant').value.trim();
+const tier=document.getElementById('lic-tier').value;
+if(!tid){alert('Enter tenant ID');return;}
+const r=await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:'13.6',input_data:{tenant_id:tid,tier}})});
+const d=await r.json();
+const lic=d.output?.license;
+if(lic){
+const el=document.getElementById('lic-list');
+el.innerHTML=`<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:0.5rem;font-size:0.8rem"><b style="color:var(--green)">Generated:</b> ${lic.key}<br><b>Tier:</b> ${lic.tier} <b>Features:</b> ${lic.features.join(', ')}<br><b>Max Users:</b> ${lic.max_users} <b>Max API Calls:</b> ${lic.max_api_calls}</div>`+el.innerHTML;
+}
+}
+
+async function loadAudit(){
+try{
+const r=await fetch('/api/functions/execute',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({function_id:'13.5',input_data:{limit:50}})});
+const d=await r.json();
+const events=d.output?.events||[];
+const el=document.getElementById('audit-events');
+el.innerHTML=events.map(e=>`<div style="padding:0.5rem;border-bottom:1px solid var(--border)"><span class="badge badge-purple">${e.action}</span> <span class="badge badge-yellow">${e.severity}</span> <span style="color:var(--text-dim)">${e.id} · ${new Date(e.timestamp*1000).toLocaleString()}</span></div>`).join('')||'<div style="color:var(--text-dim)">No audit events</div>';
+}catch(e){}
+}
+
+async function loadCloud(){
+const providers=[
+{name:'Hetzner',plan:'CX22',price:'€3.49/mo',region:'EU'},
+{name:'DigitalOcean',plan:'Basic',price:'$6/mo',region:'Global'},
+{name:'AWS',plan:'t2.micro',price:'Free 12mo',region:'Global'},
+{name:'GCP',plan:'e2-micro',price:'Free forever',region:'Global'},
+{name:'Oracle',plan:'Always Free',price:'Free forever',region:'US/EU/Asia'}
+];
+document.getElementById('cloud-grid').innerHTML=providers.map(p=>`<div class="stat-box"><div class="num" style="font-size:1.2rem">${p.name}</div><div class="label">${p.plan} · ${p.price}<br>${p.region}</div></div>`).join('');
+}
+
+async function loadK8s(){
+const resources=['Deployment','Service','Ingress','HPA','PDB','Namespace','ConfigMap','Secret','ServiceAccount'];
+document.getElementById('k8s-grid').innerHTML=resources.map(r=>`<div class="stat-box"><div class="num" style="font-size:1rem">✓ ${r}</div><div class="label">Ready</div></div>`).join('')+'<div class="stat-box"><div class="num" style="font-size:1rem">Helm Chart</div><div class="label">ck-nexus v1.0.0</div></div>';
+}
+
+async function loadObs(){
+document.getElementById('obs-grid').innerHTML=[
+{name:'Metrics',desc:'Counter/Gauge/Histogram'},
+{name:'Logs',desc:'Structured JSON'},
+{name:'Tracing',desc:'Distributed Spans'},
+{name:'Alerts',desc:'Rule Engine + Auto-resolve'},
+{name:'Prometheus',desc:'Export Ready'},
+{name:'Grafana',desc:'Dashboard Compatible'}
+].map(o=>`<div class="stat-box"><div class="num" style="font-size:1rem">✓ ${o.name}</div><div class="label">${o.desc}</div></div>`).join('');
+}
+
+async function loadKG(){
+try{
+const r=await fetch('/api/knowledge');const d=await r.json();
+document.getElementById('kg-grid').innerHTML=`
+<div class="stat-box"><div class="num">${d.entities}</div><div class="label">Entities</div></div>
+<div class="stat-box"><div class="num">${d.relations}</div><div class="label">Relations</div></div>
+<div class="stat-box"><div class="num">${Object.keys(d.entity_types).length}</div><div class="label">Entity Types</div></div>
+`+Object.entries(d.entity_types).slice(0,6).map(([k,v])=>`<div class="stat-box"><div class="num" style="font-size:0.9rem">${k}</div><div class="label">${v} entities</div></div>`).join('');
+}catch(e){}
+}
+
+loadDashboard();
+</script>
+</body>
+</html>

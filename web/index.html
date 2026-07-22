@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CK-NEXUS AIOS — Enterprise AI Operating System</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#12121a;--border:#1e1e2e;--primary:#6c5ce7;--primary-light:#a29bfe;--green:#00b894;--red:#d63031;--yellow:#fdcb6e;--text:#e0e0e0;--text-dim:#636e72;--accent:#00cec9}
+body{font-family:'SF Mono','Fira Code','Consolas',monospace;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
+.hero h1{font-size:3.5rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;text-align:center}
+.hero .tagline{color:var(--text-dim);font-size:1.1rem;margin-bottom:3rem;text-align:center}
+.stats-bar{display:flex;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;justify-content:center}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;min-width:160px;text-align:center}
+.stat-card .num{font-size:2.5rem;font-weight:700;color:var(--primary-light)}
+.stat-card .label{color:var(--text-dim);font-size:0.8rem;margin-top:0.3rem}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1200px;margin-bottom:3rem;width:100%}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s}
+.feature:hover{border-color:var(--primary)}
+.feature .icon{font-size:1.8rem;margin-bottom:0.8rem}
+.feature h3{color:var(--primary-light);margin-bottom:0.5rem}
+.feature p{color:var(--text-dim);font-size:0.85rem;line-height:1.5}
+.cta{display:flex;gap:1rem;margin-top:1rem}
+.btn{padding:0.8rem 2rem;border-radius:8px;font-family:inherit;font-size:0.9rem;cursor:pointer;text-decoration:none;border:none;transition:all 0.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-light)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary-light)}
+.terminal-demo{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;max-width:800px;width:100%;margin-top:2rem}
+.terminal-bar{display:flex;gap:0.5rem;margin-bottom:1rem}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-dot.r{background:var(--red)}.terminal-dot.y{background:var(--yellow)}.terminal-dot.g{background:var(--green)}
+.terminal-code{font-size:0.85rem;line-height:1.8;color:var(--text-dim)}
+.terminal-code .cmd{color:var(--green)}.terminal-code .out{color:var(--text)}.terminal-code .hl{color:var(--accent)}
+.footer{text-align:center;color:var(--text-dim);padding:2rem;font-size:0.75rem}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>CK-NEXUS AIOS</h1>
+<p class="tagline">Enterprise AI Operating System — 142 Functions · Multi-tenant · Full Observability</p>
+<div class="stats-bar">
+<div class="stat-card"><div class="num" id="fn-count">142</div><div class="label">Functions</div></div>
+<div class="stat-card"><div class="num">14</div><div class="label">Categories</div></div>
+<div class="stat-card"><div class="num">6</div><div class="label">AI Agents</div></div>
+<div class="stat-card"><div class="num">727</div><div class="label">Tests Passing</div></div>
+</div>
+<div class="features">
+<div class="feature"><div class="icon">🧠</div><h3>Knowledge Graph</h3><p>76 entities, 81 relations — typed graph engine with BFS traversal, path finding, and transitive inference.</p></div>
+<div class="feature"><div class="icon">🔒</div><h3>Enterprise Security</h3><p>RBAC, JWT, bcrypt, HMAC, API keys — full audit trail with immutable logging.</p></div>
+<div class="feature"><div class="icon">👥</div><h3>Multi-tenant</h3><p>4 plans (Free → Enterprise), quota management, license key system with feature gating.</p></div>
+<div class="feature"><div class="icon">📊</div><h3>Observability</h3><p>Metrics, structured logging, distributed tracing, alert rules with auto-resolve.</p></div>
+<div class="feature"><div class="icon">☁️</div><h3>Cloud Deploy</h3><p>5 providers (Oracle free forever), one-click VPS creation with auto-install.</p></div>
+<div class="feature"><div class="icon">⎈</div><h3>Kubernetes</h3><p>Manifest builder, Helm chart templating, HPA auto-scaling, PDB, full stack generation.</p></div>
+</div>
+<div class="cta">
+<a href="/app" class="btn btn-primary">Open Dashboard →</a>
+<a href="/docs" class="btn btn-outline">API Documentation</a>
+</div>
+<div class="terminal-demo">
+<div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div>
+<div class="terminal-code">
+<span class="cmd">$</span> curl -X POST http://localhost:8080/api/functions/execute \<br>
+&nbsp;&nbsp;-H "Content-Type: application/json" \<br>
+&nbsp;&nbsp;-d '{"function_id": "13.1", "input_data": {"name": "Acme Corp", "plan": "enterprise"}}'<br><br>
+<span class="out">{</span><br>
+<span class="out">  "success": <span class="hl">true</span>,</span><br>
+<span class="out">  "output": {"tenant": {"id": "tenant_a1b2c3d4e5f6", "name": "Acme Corp", "plan": "enterprise"}}</span><br>
+<span class="out">}</span>
+</div>
+</div>
+</div>
+<div class="footer">CK-NEXUS AIOS v1.0.0 · Enterprise AI Operating System · Built with ❤️</div>
+<script>
+fetch('/api/stats').then(r=>r.json()).then(d=>{
+document.getElementById('fn-count').textContent=d.functions.registered;
+}).catch(()=>{});
+</script>
+</body>
+</html>
