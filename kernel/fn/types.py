@@ -19,6 +19,7 @@ class FunctionCategory(Enum):
     SHADOW_BRIDGE = "shadow_bridge"
     CLOUD = "cloud"
     ENTERPRISE = "enterprise"
+    KUBERNETES = "kubernetes"
 
 
 class FunctionStatus(Enum):

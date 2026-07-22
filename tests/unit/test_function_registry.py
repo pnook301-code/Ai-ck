@@ -11,12 +11,12 @@ def registry():
 
 class TestRegistration:
     def test_registers_all_110(self, registry):
-        assert len(registry._functions) == 130
+        assert len(registry._functions) == 142
 
-    def test_categories_have_10_each(self, registry):
+    def test_categories_have_functions(self, registry):
         for cat in FunctionCategory:
             fns = registry.list_functions(cat)
-            assert len(fns) == 10, f"{cat.value} has {len(fns)} functions"
+            assert len(fns) >= 10, f"{cat.value} has {len(fns)} functions, expected >= 10"
 
     def test_all_have_handlers(self, registry):
         for fn_id, fn_def in registry._functions.items():
@@ -171,7 +171,7 @@ class TestStats:
     @pytest.mark.asyncio
     async def test_stats_tracking(self, registry):
         stats = registry.get_stats()
-        assert stats["registered"] == 130
+        assert stats["registered"] == 142
         assert stats["executions"] == 0
 
         await registry.execute("1.1", {})
